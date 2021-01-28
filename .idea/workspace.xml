@@ -2,26 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bdbfb6b-64dd-4932-a60c-8655086974c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/wx/controller/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/wx/mapper/DoctorMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/wx/mapper/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/wx/poj/Doctor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/wx/poj/LoginUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/wx/poj/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/wx/service/DoctorService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/wx/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/wx/util/JsonUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/wx/util/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/wx/poj/MessageResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/wx/util/MessageConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Index.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/Index.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/Application.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/Index.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/DoctorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/DoctorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/UserService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +88,7 @@
       <workItem from="1611144638473" duration="957000" />
       <workItem from="1611656093976" duration="2019000" />
       <workItem from="1611663667625" duration="7370000" />
-      <workItem from="1611801952350" duration="1270000" />
+      <workItem from="1611801952350" duration="6889000" />
     </task>
     <servers />
   </component>

@@ -20,5 +20,11 @@ public class UserService {
         wrapper.eq("password",password);
         return userMapper.selectOne(wrapper);
     }
+    public User getByPhone(String phone){
+        QueryWrapper<User> wrapper=new QueryWrapper();
+        wrapper.eq("phone",phone);
+        return userMapper.selectOne(wrapper);
+    }
+
 
 }

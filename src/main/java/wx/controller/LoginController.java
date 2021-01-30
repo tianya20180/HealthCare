@@ -19,6 +19,7 @@ import wx.service.DoctorService;
 import wx.service.UserService;
 import wx.util.JsonUtil;
 import wx.util.MessageConfig;
+import wx.util.PhoneCodeUtil;
 import wx.util.Result;
 import java.util.*;
 import javax.annotation.Resource;
@@ -33,6 +34,8 @@ public class LoginController {
     private UserService userService;
     @Resource
     private DoctorService doctorService;
+
+    private static String code="";
 
 
     @GetMapping("/isLogin")
@@ -98,9 +101,10 @@ public class LoginController {
         ZhenziSmsClient client=new ZhenziSmsClient(MessageConfig.APIURL,MessageConfig.APPID,MessageConfig.APPSECRET);
         Map<String,Object>params=new HashMap<String, Object>();
         params.put("number",phone);
-        params.put("templateId","0");
+        params.put("templateId","3501");
         String[]templateParams=new String[2];
-        templateParams[0]="test";
+        code= PhoneCodeUtil.getCode();
+        templateParams[0]=code;
         params.put("templateParams",templateParams);
         String result=client.send(params);
         MessageResult ms=JsonUtil.jsonToPojo(result,MessageResult.class);
@@ -113,22 +117,43 @@ public class LoginController {
 
     @GetMapping("/checkPhone")
     public Result checkPhone(String phone){
-
-
-
-
+        if(phone==null||phone.equals("")){
+            return new Result(null,"手机号码为空",1);
+        }
+        Doctor doctor=doctorService.getByPhone(phone);
+        if(doctor!=null){
+            return new Result(null,"已注册",0);
+        }
+        User user=userService.getByPhone(phone);
+        if(user!=null){
+            return new Result(null,"已注册",0);
+        }
+        return new Result(null,"未注册",0);
 
     }
 
     @GetMapping("/loginByCode")
-    public Result loginByCode(String phone,String code,int identity,HttpSession session) throws Exception {
-
+    public Result loginByCode(String phone,String sendCode,Integer identity,HttpSession session) throws Exception {
         //检查该号码是否已注册
+        if(phone==null||sendCode==null||identity==null){
+            return new Result(null,"为null",1);
+        }
+        if(code!=sendCode){
+            return new Result(null,"登录失败 验证码错误",1);
+        }
+        if(identity==0){
+            User user=userService.getByPhone(phone);
+            session.setAttribute("user",user);
+            session.setAttribute("identity",identity);
+            return new Result(null,"登录成功",0);
 
-
-
-
-
+        }else if(identity==1){
+            Doctor doctor=doctorService.getByPhone(phone);
+            session.setAttribute("user",doctor);
+            session.setAttribute("identity",identity);
+            return new Result(null,"登录成功",0);
+        }
+        return new Result(null,"登录失败",1);
     }
 
 

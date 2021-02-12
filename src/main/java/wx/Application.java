@@ -9,9 +9,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
-@MapperScan("com.qdu.wx.mapper")
-
+//@MapperScan("com.qdu.wx.mapper")
+@MapperScan("wx.mapper")
 public class Application {
     public static void main(String[]args){
         SpringApplication.run(Application.class, args);

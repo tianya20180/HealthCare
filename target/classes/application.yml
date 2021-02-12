@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/jackieathome?useSSL=false
-    username: root
-    password: mypassword
+    url: jdbc:mysql://rm-m5etk9y1cw8uh08c9ro.mysql.rds.aliyuncs.com:3306/qdu?useSSL=false&useUnicode=true&characterEncodeing=UTF-8
+    username: wangxi
+    password: Wangxi1023%123
     # 6.x版本的MySQL JDBC驱动类为com.mysql.cj.jdbc.Driver
     # 5.X版本的MySQL JDBC驱动类为com.mysql.jdbc.Driver
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver

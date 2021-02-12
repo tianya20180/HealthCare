@@ -1,12 +1,14 @@
 package wx.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.springframework.stereotype.Service;
 import wx.mapper.UserMapper;
 import wx.poj.Doctor;
 import wx.poj.User;
 
 import javax.annotation.Resource;
 
+@Service
 public class UserService {
     @Resource
     private UserMapper userMapper;

@@ -4,13 +4,11 @@ package wx.controller;
 import com.zhenzi.sms.ZhenziSmsClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
-import sun.security.provider.MD5;
 import wx.poj.Doctor;
 import wx.poj.LoginUser;
 import wx.poj.MessageResult;
@@ -18,12 +16,11 @@ import wx.poj.User;
 import wx.service.DoctorService;
 import wx.service.UserService;
 import wx.util.JsonUtil;
-import wx.util.MessageConfig;
+import config.MessageConfig;
 import wx.util.PhoneCodeUtil;
 import wx.util.Result;
 import java.util.*;
 import javax.annotation.Resource;
-import javax.print.Doc;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -102,11 +99,12 @@ public class LoginController {
         Map<String,Object>params=new HashMap<String, Object>();
         params.put("number",phone);
         params.put("templateId","3501");
-        String[]templateParams=new String[2];
+        String[]templateParams=new String[1];
         code= PhoneCodeUtil.getCode();
         templateParams[0]=code;
         params.put("templateParams",templateParams);
         String result=client.send(params);
+        System.out.println(result);
         MessageResult ms=JsonUtil.jsonToPojo(result,MessageResult.class);
         if(ms.getCode()==0){
             return new Result(null,"发送成功",0);

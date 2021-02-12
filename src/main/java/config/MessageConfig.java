@@ -1,4 +1,4 @@
-package wx.util;
+package config;
 
 /*
 * 发送短信的一些配置

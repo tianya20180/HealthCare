@@ -17,7 +17,6 @@ public class Doctor {
     private Integer age;
     private String address;
     @TableField("card_id")
-    private String cardId;//身份证号
-    private String date;
+    private String cardId;//身份证
 
 }

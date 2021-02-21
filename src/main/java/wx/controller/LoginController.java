@@ -5,10 +5,7 @@ import com.zhenzi.sms.ZhenziSmsClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import wx.poj.Doctor;
 import wx.poj.LoginUser;
 import wx.poj.MessageResult;
@@ -25,6 +22,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @ResponseBody
+@RequestMapping("/v1")
 public class LoginController {
 
     @Resource
@@ -113,7 +111,7 @@ public class LoginController {
     }
 
 
-    @GetMapping("/checkPhone")
+    @GetMapping("/exists")
     public Result checkPhone(String phone){
         if(phone==null||phone.equals("")){
             return new Result(null,"手机号码为空",1);
@@ -126,7 +124,7 @@ public class LoginController {
         if(user!=null){
             return new Result(null,"已注册",0);
         }
-        return new Result(null,"未注册",0);
+        return new Result(null,"未注册",1);
 
     }
 
@@ -139,17 +137,20 @@ public class LoginController {
         if(code!=sendCode){
             return new Result(null,"登录失败 验证码错误",1);
         }
+        Map<String,Object> map=new HashMap<String,Object>();
         if(identity==0){
             User user=userService.getByPhone(phone);
             session.setAttribute("user",user);
             session.setAttribute("identity",identity);
-            return new Result(null,"登录成功",0);
+            map.put("user",user);
+            return new Result(map,"登录成功",0);
 
         }else if(identity==1){
             Doctor doctor=doctorService.getByPhone(phone);
             session.setAttribute("user",doctor);
             session.setAttribute("identity",identity);
-            return new Result(null,"登录成功",0);
+            map.put("user",doctor);
+            return new Result(map,"登录成功",0);
         }
         return new Result(null,"登录失败",1);
     }

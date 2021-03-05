@@ -20,7 +20,7 @@ public class DoctorService {
 
     public Doctor checkDoctor(String name,String password){
         QueryWrapper<Doctor>wrapper=new QueryWrapper();
-        wrapper.eq("user_name",name);
+        wrapper.eq("phone",name);
         wrapper.eq("password",password);
         return doctorMapper.selectOne(wrapper);
     }

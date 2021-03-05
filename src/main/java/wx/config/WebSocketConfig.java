@@ -1,9 +1,10 @@
-package config;
+package wx.config;
 
 import inteceptor.HttpHandShakeIntecepter;
 import inteceptor.SocketChannelIntecepter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 import javax.websocket.Endpoint;
@@ -28,13 +29,14 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
  */
 @Configuration
 @EnableWebSocketMessageBroker
+@EnableScheduling
+
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
 
     /**
      * 配置基站
      */
-    @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/endpoint-websocket").addInterceptors(new HttpHandShakeIntecepter()).setAllowedOrigins("*").withSockJS();
     }

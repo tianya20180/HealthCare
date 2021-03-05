@@ -14,7 +14,6 @@ public class Doctor {
     private String userName;
     private String password;
     private String phone;
-    private Integer age;
     private String address;
     @TableField("card_id")
     private String cardId;//身份证

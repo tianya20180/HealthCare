@@ -2,7 +2,7 @@ package wx.controller;
 
 
 import com.zhenzi.sms.ZhenziSmsClient;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
@@ -13,14 +13,16 @@ import wx.poj.User;
 import wx.service.DoctorService;
 import wx.service.UserService;
 import wx.util.JsonUtil;
-import config.MessageConfig;
+import wx.config.MessageConfig;
 import wx.util.PhoneCodeUtil;
 import wx.util.Result;
 import java.util.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+@Slf4j
 @Controller
+@CrossOrigin
 @ResponseBody
 @RequestMapping("/v1")
 public class LoginController {
@@ -60,29 +62,32 @@ public class LoginController {
         if(loginUser==null){
             return new Result(null,"user为空",1);
         }
-        String username=loginUser.getUserName();
+        log.info("name:"+loginUser.getPhone()+"password:"+loginUser.getPassword()+"code:"+loginUser.getCaptchaCode());
+        String phone=loginUser.getPhone();
         String password=loginUser.getPassword();
         password = DigestUtils.md5DigestAsHex(password.getBytes());
         Integer identity=loginUser.getIdentity();
-        if (username==null||password==null||identity==null){
+        if (phone==null||password==null||identity==null){
             return new Result(null,"用户名或者密码或者身份为空",1);
         }
         if(identity==0){
 
-            User user=userService.checkUser(username,password);
+            User user=userService.checkUser(phone,password);
             if(user!=null){
                 session.setAttribute("user",user);
                 session.setAttribute("identity",identity);
+                return new Result(null,"登录成功",0);
+
             }
-            return new Result(null,"登录成功",0);
 
         }else if(identity==1){
-            Doctor doctor=doctorService.checkDoctor(username,password);
+            Doctor doctor=doctorService.checkDoctor(phone,password);
             if(doctor!=null){
                 session.setAttribute("user",doctor);
                 session.setAttribute("identity",identity);
+                return new Result(null,"登录成功",0);
+
             }
-            return new Result(null,"登录成功",0);
         }
         return new Result(null,"登录失败 用户名或密码错误",1);
     }
@@ -93,6 +98,7 @@ public class LoginController {
         if(phone==null||phone.equals("")){
             return new Result(null,"手机号为空",1);
         }
+        log.info("start send ========================================start send");
         ZhenziSmsClient client=new ZhenziSmsClient(MessageConfig.APIURL,MessageConfig.APPID,MessageConfig.APPSECRET);
         Map<String,Object>params=new HashMap<String, Object>();
         params.put("number",phone);
@@ -102,10 +108,12 @@ public class LoginController {
         templateParams[0]=code;
         params.put("templateParams",templateParams);
         String result=client.send(params);
-        System.out.println(result);
         MessageResult ms=JsonUtil.jsonToPojo(result,MessageResult.class);
+        Map<String,Object>map=new HashMap<String, Object>();
+        map.put("code",code);
+        log.info("end send ========================================end send");
         if(ms.getCode()==0){
-            return new Result(null,"发送成功",0);
+            return new Result(map,"发送成功",0);
         }
         return new Result(null,"发送失败",1);
     }
@@ -132,9 +140,11 @@ public class LoginController {
     public Result loginByCode(String phone,String sendCode,Integer identity,HttpSession session) throws Exception {
         //检查该号码是否已注册
         if(phone==null||sendCode==null||identity==null){
-            return new Result(null,"为null",1);
+            return new Result(null,"手机号或者验证码为null",1);
         }
-        if(code!=sendCode){
+        log.info("code:"+code);
+        log.info("sendCode:"+sendCode);
+        if(!code.equals(sendCode)){
             return new Result(null,"登录失败 验证码错误",1);
         }
         Map<String,Object> map=new HashMap<String,Object>();
@@ -160,6 +170,12 @@ public class LoginController {
     public Result register(@RequestBody Doctor doctor){
         if(doctor==null){
             return new Result(null,"doctor为null",1);
+        }
+        log.info("username:"+doctor.getUserName()+"password:"+doctor.getPassword()+"address:"+doctor.getPassword()+"cardId"+doctor.getCardId());
+        String phone=doctor.getPhone();
+        Doctor exists=doctorService.getByPhone(phone);
+        if(exists!=null){
+            return new Result(null,"已注册",0);
         }
         doctor.setPassword(DigestUtils.md5DigestAsHex(doctor.getPassword().getBytes()));
         doctorService.addDoctor(doctor);

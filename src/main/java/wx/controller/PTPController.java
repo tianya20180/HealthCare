@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 @Controller
 public class PTPController {
 
-    @Autowired
+    @Resource
     private WebSocketService ws;
 
     @MessageMapping("/ptp/single/chat")

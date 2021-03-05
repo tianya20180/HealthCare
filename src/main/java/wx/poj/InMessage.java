@@ -16,8 +16,6 @@ public class InMessage {
 
     private String content;
 
-    private Date time;
-
     public String getForm(){
         return from;
     }

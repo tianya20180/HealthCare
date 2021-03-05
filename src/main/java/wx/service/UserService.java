@@ -18,7 +18,7 @@ public class UserService {
     }
     public User checkUser(String userName,String password){
         QueryWrapper<User> wrapper=new QueryWrapper();
-        wrapper.eq("user_name",userName);
+        wrapper.eq("phone",userName);
         wrapper.eq("password",password);
         return userMapper.selectOne(wrapper);
     }

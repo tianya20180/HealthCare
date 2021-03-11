@@ -17,4 +17,6 @@ public class User {
     private String phone;
     @TableField("create_time")
     private String createTime;
+    private String avatar;
+
 }

@@ -10,6 +10,7 @@ import lombok.Data;
 @Data
 @TableName("doctor")
 public class Doctor {
+    private Integer id;
     @TableField("user_name")
     private String userName;
     private String password;
@@ -17,5 +18,8 @@ public class Doctor {
     private String address;
     @TableField("card_id")
     private String cardId;//身份证
+    private String avatar;
+    @TableField("create_time")
+    private String createTime;
 
 }

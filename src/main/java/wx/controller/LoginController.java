@@ -67,16 +67,18 @@ public class LoginController {
         String password=loginUser.getPassword();
         password = DigestUtils.md5DigestAsHex(password.getBytes());
         Integer identity=loginUser.getIdentity();
+        Map<String,Object> map=new HashMap<String,Object>();
+
         if (phone==null||password==null||identity==null){
             return new Result(null,"用户名或者密码或者身份为空",1);
         }
         if(identity==0){
-
             User user=userService.checkUser(phone,password);
             if(user!=null){
                 session.setAttribute("user",user);
                 session.setAttribute("identity",identity);
-                return new Result(null,"登录成功",0);
+                map.put("user",user);
+                return new Result(map,"登录成功",0);
 
             }
 
@@ -85,10 +87,11 @@ public class LoginController {
             if(doctor!=null){
                 session.setAttribute("user",doctor);
                 session.setAttribute("identity",identity);
-                return new Result(null,"登录成功",0);
-
+                map.put("user",doctor);
+                return new Result(map,"登录成功",0);
             }
         }
+
         return new Result(null,"登录失败 用户名或密码错误",1);
     }
 
@@ -175,6 +178,7 @@ public class LoginController {
         String phone=doctor.getPhone();
         Doctor exists=doctorService.getByPhone(phone);
         if(exists!=null){
+            log.info("手机3号："+doctor.getPhone()+"已注册");
             return new Result(null,"已注册",0);
         }
         doctor.setPassword(DigestUtils.md5DigestAsHex(doctor.getPassword().getBytes()));

@@ -29,9 +29,9 @@ public class WebSocketService {
      * 简单点对点聊天室
      */
     public void sendChatMessage(InMessage message) {
-        log.info("from:"+message.getFrom()+"to:"+message.getTo()+"message:"+message.getContent());
-        template.convertAndSend("/chat/single/"+message.getTo(),
-                new OutMessage(message.getFrom()," 发送:"+ message.getContent()));
+        log.info("from:"+message.getFromId()+"to:"+message.getToId()+"message:"+message.getContent());
+        template.convertAndSend("/chat/single/"+message.getToId(),
+                new OutMessage(message.getFromId(), message.getContent(),message.getAvatar(),message.getTime()));
     }
 
 

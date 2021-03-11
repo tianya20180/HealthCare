@@ -9,9 +9,12 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OutMessage {
-    private String from;
+    private String fromId;
 
     private String content;
 
+    private String avatar;
+
+    private String time;
 
 }

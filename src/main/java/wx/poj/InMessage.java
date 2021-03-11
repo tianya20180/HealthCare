@@ -10,15 +10,15 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class InMessage {
-    private String from;
+    private String fromId;
 
-    private String to;
+    private String toId;
 
     private String content;
 
-    public String getForm(){
-        return from;
-    }
+    private String avatar;
+
+    private String time;
 
     public InMessage(String content){
         this.content=content;

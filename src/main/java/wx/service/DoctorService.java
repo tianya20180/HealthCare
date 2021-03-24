@@ -1,6 +1,7 @@
 package wx.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.sun.java.browser.plugin2.DOM;
 import org.springframework.stereotype.Service;
 import wx.mapper.DoctorMapper;
@@ -19,9 +20,9 @@ public class DoctorService {
         doctorMapper.insert(doctor);
     }
 
-    public Doctor checkDoctor(String name,String password){
+    public Doctor checkDoctor(String phone,String password){
         QueryWrapper<Doctor>wrapper=new QueryWrapper();
-        wrapper.eq("phone",name);
+        wrapper.eq("phone",phone);
         wrapper.eq("password",password);
         return doctorMapper.selectOne(wrapper);
     }
@@ -49,5 +50,22 @@ public class DoctorService {
         wrapper.eq("category",category);
         return doctorMapper.selectList(wrapper);
     }
+
+    public void changePassword(String phone,String password){
+        UpdateWrapper<Doctor> wrapper=new UpdateWrapper();
+        wrapper.eq("phone",phone).set("password",password);
+    }
+
+    public Doctor getDoctorById(Integer id){
+        QueryWrapper<Doctor> wrapper=new QueryWrapper();
+        wrapper.eq("id",id);
+        return doctorMapper.selectOne(wrapper);
+    }
+    public void changeAvatar(Integer id,String avatar){
+        UpdateWrapper<Doctor> wrapper=new UpdateWrapper();
+        wrapper.eq("id",id).set("avatar",avatar);
+        doctorMapper.update(null,wrapper);
+    }
+
 
 }

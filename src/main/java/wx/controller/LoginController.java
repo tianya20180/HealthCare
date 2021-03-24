@@ -67,7 +67,6 @@ public class LoginController {
         String password=loginUser.getPassword();
         password = DigestUtils.md5DigestAsHex(password.getBytes());
         Integer identity=loginUser.getIdentity();
-        Map<String,Object> map=new HashMap<String,Object>();
 
         if (phone==null||password==null||identity==null){
             return new Result(null,"用户名或者密码或者身份为空",1);
@@ -77,8 +76,8 @@ public class LoginController {
             if(user!=null){
                 session.setAttribute("user",user);
                 session.setAttribute("identity",identity);
-                map.put("user",user);
-                return new Result(map,"登录成功",0);
+                log.info(session.getId());
+                return new Result(user,"登录成功",0);
 
             }
 
@@ -87,8 +86,7 @@ public class LoginController {
             if(doctor!=null){
                 session.setAttribute("user",doctor);
                 session.setAttribute("identity",identity);
-                map.put("user",doctor);
-                return new Result(map,"登录成功",0);
+                return new Result(doctor,"登录成功",0);
             }
         }
 
@@ -150,20 +148,18 @@ public class LoginController {
         if(!code.equals(sendCode)){
             return new Result(null,"登录失败 验证码错误",1);
         }
-        Map<String,Object> map=new HashMap<String,Object>();
+        Map<String,Object> data=new HashMap<String,Object>();
         if(identity==0){
             User user=userService.getByPhone(phone);
             session.setAttribute("user",user);
             session.setAttribute("identity",identity);
-            map.put("user",user);
-            return new Result(map,"登录成功",0);
+            return new Result(user,"登录成功",0);
 
         }else if(identity==1){
             Doctor doctor=doctorService.getByPhone(phone);
             session.setAttribute("user",doctor);
             session.setAttribute("identity",identity);
-            map.put("user",doctor);
-            return new Result(map,"登录成功",0);
+            return new Result(doctor,"登录成功",0);
         }
         return new Result(null,"登录失败",1);
     }

@@ -4,10 +4,13 @@ package wx.poj;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.ToString;
+
 /*
 * 用户实体类
 * */
 @Data
+@ToString
 @TableName("user")
 public class User {
     private Integer id;
@@ -18,5 +21,8 @@ public class User {
     @TableField("create_time")
     private String createTime;
     private String avatar;
+    private Integer money;
+    @TableField("follow_size")
+    private Integer followSize;
 
 }

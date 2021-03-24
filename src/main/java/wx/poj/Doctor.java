@@ -21,5 +21,18 @@ public class Doctor {
     private String avatar;
     @TableField("create_time")
     private String createTime;
+    @TableField("working_years")
+    private Integer workYears;
+    @TableField("des")
+    private String des;
+    @TableField("hospital")
+    private String hospital;
+    @TableField("specialty")
+    private String specialty;
+    @TableField("count")
+    private Integer count;
+    @TableField("order_money")
+    private Integer orderMoney;
+
 
 }

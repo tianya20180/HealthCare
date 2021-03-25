@@ -33,6 +33,7 @@ public class Doctor {
     private Integer count;
     @TableField("order_money")
     private Integer orderMoney;
+    private Integer money;
 
 
 }

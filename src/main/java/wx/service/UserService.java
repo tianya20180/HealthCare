@@ -34,6 +34,7 @@ public class UserService {
     public void changePassword(String phone,String password){
         UpdateWrapper<User> wrapper=new UpdateWrapper();
         wrapper.eq("phone",phone).set("password",password);
+        userMapper.update(null,wrapper);
     }
 
     public User getUserById(Integer id){
@@ -48,6 +49,11 @@ public class UserService {
         UpdateWrapper<User> wrapper=new UpdateWrapper();
         wrapper.eq("id",id).set("avatar",avatar);
         userMapper.update(null,wrapper);
+    }
+
+    public void updateUser(User user){
+        UpdateWrapper<User> wrapper=new UpdateWrapper();
+        userMapper.update(user,wrapper);
     }
 
 

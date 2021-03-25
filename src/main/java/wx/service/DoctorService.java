@@ -66,6 +66,10 @@ public class DoctorService {
         wrapper.eq("id",id).set("avatar",avatar);
         doctorMapper.update(null,wrapper);
     }
+    public void updateDoctor(Doctor doctor){
+        UpdateWrapper<Doctor> wrapper=new UpdateWrapper();
+        doctorMapper.update(doctor,wrapper);
+    }
 
 
 }

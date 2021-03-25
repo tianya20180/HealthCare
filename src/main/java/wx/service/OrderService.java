@@ -27,4 +27,11 @@ public class OrderService {
         orderMapper.update(null,wrapper);
     }
 
+    public Order getOrderById(String orderId){
+        QueryWrapper<Order> wrapper=new QueryWrapper();
+        wrapper.eq("order_id",orderId);
+        return orderMapper.selectOne(wrapper);
+    }
+
+
 }

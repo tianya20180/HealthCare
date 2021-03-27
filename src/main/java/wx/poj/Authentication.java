@@ -19,4 +19,6 @@ public class Authentication {
         private String hospitalPath;
         @TableField("doctor_path")
         private String doctorPath;
+        private Integer status;//0 暂未批准 1 已批准 2 拒绝
+        private Integer doctorId;
 }

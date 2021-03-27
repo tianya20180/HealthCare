@@ -34,6 +34,8 @@ public class Doctor {
     @TableField("order_money")
     private Integer orderMoney;
     private Integer money;
+    @TableField("status")
+    private Integer status;
 
 
 }

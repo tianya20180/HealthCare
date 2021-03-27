@@ -53,7 +53,4 @@ public class PrescriptionController {
             return new Result(prescription,"获取成功",0);
         }
 
-
-
-
 }

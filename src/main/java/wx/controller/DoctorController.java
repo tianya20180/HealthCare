@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import wx.poj.Authentication;
 import wx.poj.Doctor;
 import wx.poj.User;
+import wx.service.AuthenticationService;
 import wx.service.DoctorService;
 import wx.util.Result;
 
@@ -27,7 +29,8 @@ public class DoctorController {
 
     @Resource
     private DoctorService doctorService;
-
+    @Resource
+    private AuthenticationService authenticationService;
     @GetMapping("/search")
     public Result searchDoctor(String userName){
         if(userName==null||userName.equals("")){
@@ -98,11 +101,48 @@ public class DoctorController {
     }
 
     @PostMapping("/authentication")
-    public Result authentication(){
-        return new Result(null,"更新头像成功",0);
+    public Result authentication(@RequestParam(value = "card") MultipartFile card,
+                                 @RequestParam(value = "hospital") MultipartFile hospital,
+                                 @RequestParam(value = "doctor") MultipartFile doctor,Integer doctorId) throws IOException {
+        String cardPath="C:\\Users\\wangxi\\Desktop\\谷芽平台\\HealthyCare-Web\\static\\authentication\\card";
+        String hospitalPath="C:\\Users\\wangxi\\Desktop\\谷芽平台\\HealthyCare-Web\\static\\authentication\\hospital";
+        String doctorPath="C:\\Users\\wangxi\\Desktop\\谷芽平台\\HealthyCare-Web\\static\\authentication\\doctor";
+        File cardDir=new File(cardPath);
+        File hospitalDir=new File(hospitalPath);
+        File doctorDir=new File(doctorPath);
+        if(!cardDir.exists()){
+            cardDir.mkdirs();
+        }
+        if(!hospitalDir.exists()){
+            hospitalDir.mkdirs();
+        }
+        if(!doctorDir.exists()){
+            doctorDir.mkdirs();
+        }
+        String cardFileName=makeFile(card,cardDir);
+        String hospitalFileName=makeFile(hospital,hospitalDir);
+        String doctorFileName=makeFile(doctor,doctorDir);
+
+        Authentication authentication=new Authentication();
+        authentication.setCardPath(cardFileName);
+        authentication.setDoctorPath(hospitalFileName);
+        authentication.setHospitalPath(doctorFileName);
+        authentication.setStatus(0);
+        authentication.setDoctorId(doctorId);
+        authenticationService.addAuthentication(authentication);
+        return new Result(null,"上传成功",0);
     }
 
-
-
-
+    public String makeFile(MultipartFile file,File dir) throws IOException {
+        String orginalFileName=file.getOriginalFilename();
+        int beginIndex=orginalFileName.lastIndexOf(".");
+        String suffix="";
+        if(beginIndex!=-1){
+            suffix=orginalFileName.substring(beginIndex);
+        }
+        String Filename= UUID.randomUUID().toString()+suffix;
+        File dest=new File(dir,Filename);
+        file.transferTo(dest);
+        return dir+Filename;
+    }
 }

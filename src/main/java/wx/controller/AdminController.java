@@ -22,7 +22,7 @@ import javax.annotation.Resource;
 @RequestMapping("/admin")
 public class AdminController {
 
-
+   /*
     @Resource
     private AuthenticationService authenticationService;
     @Resource
@@ -57,18 +57,38 @@ public class AdminController {
     public Result getAllAuthentication(){
         List<Authentication>authenticationList=authenticationService.getAllAuthentication();
         return new Result(authenticationList,"成功获取",1);
+    }*/
+/*
+    @GetMapping("/getAllUser")
+    public Result getAllUser(){
+
+    }
+    @GetMapping("/banUser")
+    public Result banUser(){
+
+    }
+    @GetMapping("/deleteUser")
+    public Result deleteUser(){
+
+    }
+    @GetMapping("/banDoctor")
+    public Result banDoctor(){
+
+    }
+    @GetMapping("deleteDoctor")
+    public Result deleteDoctor(){
+
     }
 
+    @GetMapping("/getAllDoctor")
+    public Result getAllDoctor(){
 
+    }
 
+    @GetMapping("/getAllOrder")
+    public Result getAllOrder(){
 
+    }
 
-
-
-
-
-
-
-
-
+*/
 }

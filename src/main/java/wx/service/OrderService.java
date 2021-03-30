@@ -2,11 +2,13 @@ package wx.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import org.springframework.stereotype.Service;
 import wx.mapper.OrderMapper;
 import wx.poj.Order;
 import java.util.*;
 import javax.annotation.Resource;
 
+@Service
 public class OrderService {
     @Resource
     private OrderMapper orderMapper;

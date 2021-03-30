@@ -4,9 +4,16 @@
     <list default="true" id="0bdbfb6b-64dd-4932-a60c-8655086974c0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/DoctorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/DoctorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/poj/Authentication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/poj/Doctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/PayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/PayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/poj/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/DoctorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/DoctorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/PayController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/PayController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/poj/Doctor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/poj/Doctor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/DoctorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/DoctorService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/UserService.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -128,7 +135,9 @@
       <workItem from="1616409440640" duration="7055000" />
       <workItem from="1616550823467" duration="6362000" />
       <workItem from="1616679966823" duration="3464000" />
-      <workItem from="1616762078842" duration="4667000" />
+      <workItem from="1616762078842" duration="6051000" />
+      <workItem from="1617002676219" duration="8321000" />
+      <workItem from="1617090331804" duration="1413000" />
     </task>
     <servers />
   </component>
@@ -155,11 +164,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/wx/controller/UserController.java</url>
           <line>70</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/wx/poj/Drug.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

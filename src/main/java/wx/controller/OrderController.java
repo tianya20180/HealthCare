@@ -23,19 +23,22 @@ public class OrderController {
     @Resource
     private OrderService orderService;
 
-    @PostMapping("/addOrder")
+    @GetMapping("/addOrder")
     public Result addOrder(Integer userId,Integer doctorId,Integer money){
         Order order=new Order();
+        log.info("userId:"+userId+"doctorId:"+doctorId+"money:"+money);
         order.setStatus(0);//0 未支付 1支付
         order.setDoctorId(doctorId);
         order.setMoney(money);
         order.setUserId(userId);
         String orderId= OrderUtil.getOrderIdByUUId();
+        log.info(orderId);
         order.setOrderId(orderId);
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date=sdf.format(new Date()).toString();
+        order.setCreateTime(date);
         orderService.addOrder(order);
-        return new Result(null,"添加成功",0);
+        return new Result(order,"添加成功",0);
     }
 
     @GetMapping("/changeStatus")

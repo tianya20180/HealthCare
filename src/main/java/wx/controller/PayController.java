@@ -35,10 +35,21 @@ public class PayController {
                 return new Result(null,"orderId为空",1);
             }
             Order order=orderService.getOrderById(orderId);
+            if(order==null){
+                return new Result(null,"找不到订单",1);
+            }
             User user=userService.getUserById(order.getUserId());
+            if(user==null){
+                return new Result(null,"找不到用户",1);
+            }
             Doctor doctor=doctorService.getDoctorById(order.getDoctorId());
+            if(doctor==null){
+                return new Result(null,"找不到医生",1);
+            }
             Integer userMoney=user.getMoney();
             Integer needMoney=order.getMoney();
+            log.info("userMoney:"+userMoney);
+            log.info("needMoney:"+needMoney);
             if(userMoney<needMoney){
                 return new Result(null,"余额不足",1);
             }
@@ -47,7 +58,7 @@ public class PayController {
             userService.updateUser(user);
             doctorService.updateDoctor(doctor);
             orderService.changeStatus(1);
-            return new Result(null,"付款成功",1);
+            return new Result(null,"付款成功",0);
 
         }
 

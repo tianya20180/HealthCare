@@ -35,5 +35,9 @@ public class OrderService {
         return orderMapper.selectOne(wrapper);
     }
 
+    public void deleteOrder(Integer id){
+         orderMapper.deleteById(id);
+    }
+
 
 }

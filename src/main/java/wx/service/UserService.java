@@ -8,7 +8,7 @@ import wx.mapper.UserMapper;
 import wx.poj.Doctor;
 import wx.poj.User;
 import wx.util.Result;
-
+import java.util.List;
 import javax.annotation.Resource;
 
 @Slf4j
@@ -55,6 +55,20 @@ public class UserService {
         UpdateWrapper<User> wrapper=new UpdateWrapper();
         userMapper.update(user,wrapper);
     }
+    public List<User>getAllUser(){
+        QueryWrapper<User> wrapper=new QueryWrapper();
+        return userMapper.selectList(wrapper);
+    }
+
+    public void changeUserStatus(Integer id,Integer status){
+        UpdateWrapper<User> wrapper=new UpdateWrapper();
+        wrapper.eq("id",id).set("status",status);
+        userMapper.update(null,wrapper);
+    }
+    public void deleteUser(Integer id){
+        userMapper.deleteById(id);
+    }
+
 
 
 

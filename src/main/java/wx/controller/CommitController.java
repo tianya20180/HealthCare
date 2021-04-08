@@ -31,7 +31,7 @@ public class CommitController {
     @GetMapping("/add")
     public Result addCommit(Integer userId,Integer doctorId,String content){
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String date=sdf.format(new Date()).toString();
+        String date= sdf.format(new Date());
         Commit commit=new Commit();
         commit.setContent(content);
         commit.setDoctorId(doctorId);

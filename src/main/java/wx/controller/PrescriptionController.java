@@ -9,6 +9,8 @@ import wx.poj.Prescription;
 import wx.service.DrugService;
 import wx.service.PrescriptionService;
 import wx.util.Result;
+
+import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.annotation.Resource;
 
@@ -35,10 +37,17 @@ public class PrescriptionController {
             return new Result(null,"新增成功",0);
         }
 
-        @PostMapping("/addPrescription")
-        public Result addPrescription(@RequestBody Prescription prescription){
-            if(prescription==null)
+        @GetMapping("/addPrescription")
+        public Result addPrescription(Integer doctorId,Integer userId){
+            if(doctorId==null||userId==null)
                 return new Result(null,"prescription为null",1);
+            Prescription prescription=new Prescription();
+            prescription.setDoctorId(doctorId);
+            prescription.setUserId(userId);
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String date= sdf.format(new Date());
+            prescription.setCreateTime(date);
+            log.info(prescription.toString());
             prescriptionService.addPrescription(prescription);
             return new Result(null,"新增成功",0);
         }

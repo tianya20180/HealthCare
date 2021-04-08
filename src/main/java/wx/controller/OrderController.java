@@ -35,7 +35,7 @@ public class OrderController {
         log.info(orderId);
         order.setOrderId(orderId);
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String date=sdf.format(new Date()).toString();
+        String date= sdf.format(new Date());
         order.setCreateTime(date);
         orderService.addOrder(order);
         return new Result(order,"添加成功",0);

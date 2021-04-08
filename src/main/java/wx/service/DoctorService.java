@@ -2,14 +2,13 @@ package wx.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.sun.java.browser.plugin2.DOM;
 import org.springframework.stereotype.Service;
 import wx.mapper.DoctorMapper;
 import wx.poj.Doctor;
 import wx.poj.User;
+
 import java.util.*;
 import javax.annotation.Resource;
-import javax.print.Doc;
 
 @Service
 public class DoctorService {
@@ -70,6 +69,17 @@ public class DoctorService {
         UpdateWrapper<Doctor> wrapper=new UpdateWrapper();
         doctorMapper.update(doctor,wrapper);
     }
-
+    public List<Doctor>getAllDoctor(){
+        QueryWrapper<Doctor> wrapper=new QueryWrapper();
+        return doctorMapper.selectList(wrapper);
+    }
+    public void changeDoctorStatus(Integer id,Integer status){
+        UpdateWrapper<Doctor> wrapper=new UpdateWrapper();
+        wrapper.eq("id",id).set("status",status);
+        doctorMapper.update(null,wrapper);
+    }
+    public void deleteDoctor(Integer id){
+        doctorMapper.deleteById(id);
+    }
 
 }

@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class InMessage {
     private String fromId;
 
@@ -19,6 +17,7 @@ public class InMessage {
     private String avatar;
 
     private String time;
+
 
     public InMessage(String content){
         this.content=content;

@@ -24,5 +24,6 @@ public class User {
     private Integer money;
     @TableField("follow_size")
     private Integer followSize;
+    private Integer status;
 
 }

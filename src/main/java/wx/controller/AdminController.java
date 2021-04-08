@@ -3,17 +3,14 @@ package wx.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import wx.poj.Authentication;
-import wx.poj.Doctor;
-import wx.service.AuthenticationService;
-import wx.service.DoctorService;
+import org.springframework.util.DigestUtils;
+import org.springframework.web.bind.annotation.*;
+import wx.poj.*;
+import wx.service.*;
 import wx.util.Result;
 import java.util.List;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 @Slf4j
 @Controller
@@ -22,12 +19,61 @@ import javax.annotation.Resource;
 @RequestMapping("/admin")
 public class AdminController {
 
-   /*
+
     @Resource
     private AuthenticationService authenticationService;
     @Resource
     private DoctorService doctorService;
+    @Resource
+    private UserService userService;
+    @Resource
+    private OrderService orderService;
+    @Resource
+    private AdminService adminService;
 
+
+    @GetMapping("/getAllUser")
+    public Result getAllAdmin(){
+        List<Admin>adminList=adminService.getAllAdmin();
+        return new Result(adminList,"成功获取",0);
+    }
+    @PostMapping("/register")
+    public Result register(@RequestBody Admin admin){
+        if(admin==null){
+            return new Result(null,"doctor为null",1);
+        }
+        String phone=admin.getPhone();
+        Doctor exists=doctorService.getByPhone(phone);
+        if(exists!=null){
+            log.info("手机3号："+admin.getPhone()+"已注册");
+            return new Result(null,"已注册",0);
+        }
+        admin.setPassword(DigestUtils.md5DigestAsHex(admin.getPassword().getBytes()));
+        adminService.addMapper(admin);
+        return new Result(null,"登录成功",0);
+    }
+
+    @PostMapping("/login")
+    public Result Login(@RequestBody LoginUser loginUser, HttpSession session){
+        if(loginUser==null){
+            return new Result(null,"user为空",1);
+        }
+        String phone=loginUser.getPhone();
+        String password=loginUser.getPassword();
+        password = DigestUtils.md5DigestAsHex(password.getBytes());
+        Integer identity=loginUser.getIdentity();
+        if (phone==null||password==null||identity==null){
+            return new Result(null,"用户名或者密码或者身份为空",1);
+        }
+        Admin user=adminService.checkMapper(phone,password);
+        if(user!=null){
+                session.setAttribute("admin",user);
+                session.setAttribute("identity",identity);
+                log.info(session.getId());
+                return new Result(user,"登录成功",0);
+        }
+        return new Result(null,"登录失败 用户名或密码错误",1);
+    }
 
 
     @GetMapping("/authenticationAgree")
@@ -56,39 +102,49 @@ public class AdminController {
     @GetMapping("/getAllAuthentiation")
     public Result getAllAuthentication(){
         List<Authentication>authenticationList=authenticationService.getAllAuthentication();
-        return new Result(authenticationList,"成功获取",1);
-    }*/
-/*
+        return new Result(authenticationList,"成功获取",0);
+    }
+
     @GetMapping("/getAllUser")
     public Result getAllUser(){
+        List<User>userList=userService.getAllUser();
+        return new Result(userList,"成功获取",0);
 
     }
     @GetMapping("/banUser")
-    public Result banUser(){
-
+    public Result banUser(Integer id){
+        userService.changeUserStatus(id,0);
+        return new Result(null,"修改成功",0);
     }
     @GetMapping("/deleteUser")
-    public Result deleteUser(){
-
+    public Result deleteUser(Integer id){
+        userService.deleteUser(id);
+        return new Result(null,"修改成功",0);
     }
     @GetMapping("/banDoctor")
-    public Result banDoctor(){
-
+    public Result banDoctor(Integer id){
+        doctorService.changeDoctorStatus(id,0);
+        return new Result(null,"修改成功",0);
     }
     @GetMapping("deleteDoctor")
-    public Result deleteDoctor(){
-
+    public Result deleteDoctor(Integer id){
+        doctorService.deleteDoctor(id);
+        return new Result(null,"修改成功",0);
     }
 
     @GetMapping("/getAllDoctor")
     public Result getAllDoctor(){
-
+        List<Doctor>doctorList=doctorService.getAllDoctor();
+        return new Result(doctorList,"成功获取",0);
     }
 
     @GetMapping("/getAllOrder")
     public Result getAllOrder(){
-
+        List<Order>orderList=orderService.getAllOrder();
+        return new Result(orderList,"成功获取",0);
     }
 
-*/
+
+
+
 }

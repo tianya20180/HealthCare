@@ -18,9 +18,9 @@ public class DrugService {
             drugMapper.insert(drug);
     }
 
-    public List<Drug>getByPreId(Integer id){
+    public List<Drug>getByPreId(String id){
         QueryWrapper<Drug>queryWrapper=new QueryWrapper<Drug>();
-        queryWrapper.eq("prescription_id",id);
+        queryWrapper.eq("order_id",id);
         return drugMapper.selectList(queryWrapper);
     }
 

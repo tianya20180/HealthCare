@@ -23,10 +23,9 @@ public class PrescriptionService {
         queryWrapper.eq("user_id", userId);
         return prescriptionMapper.selectList(queryWrapper);
     }
-    public Prescription getPrescriptionByUserIdAndDoctorId(Integer userId,Integer doctorId) {
+    public Prescription getPrescriptionByUserIdAndDoctorId(String orderId) {
         QueryWrapper<Prescription> queryWrapper = new QueryWrapper<Prescription>();
-        queryWrapper.eq("user_id", userId);
-        queryWrapper.eq("doctor_id", doctorId);
+        queryWrapper.eq("order_id", orderId);
         return prescriptionMapper.selectOne(queryWrapper);
     }
 }

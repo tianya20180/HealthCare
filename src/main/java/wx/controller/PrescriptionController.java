@@ -38,7 +38,7 @@ public class PrescriptionController {
         }
 
         @GetMapping("/addPrescription")
-        public Result addPrescription(Integer doctorId,Integer userId){
+        public Result addPrescription(Integer doctorId,Integer userId,String orderId){
             if(doctorId==null||userId==null)
                 return new Result(null,"prescription为null",1);
             Prescription prescription=new Prescription();
@@ -47,17 +47,21 @@ public class PrescriptionController {
             SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String date= sdf.format(new Date());
             prescription.setCreateTime(date);
+            prescription.setOrderId(orderId);
             log.info(prescription.toString());
             prescriptionService.addPrescription(prescription);
             return new Result(null,"新增成功",0);
         }
 
         @GetMapping("/getPrescription")
-        public Result getPrescription(Integer userId,Integer doctorId){
-            if(userId==null||doctorId==null)
-                return new Result(null,"userId为null或者doctorId为null",1);
-            Prescription prescription=prescriptionService.getPrescriptionByUserIdAndDoctorId(userId,doctorId);
-            List<Drug>drugList=drugService.getByPreId(prescription.getId());
+        public Result getPrescription(String orderId){
+            Prescription prescription=prescriptionService.getPrescriptionByUserIdAndDoctorId(orderId);
+            List<Drug>drugList=drugService.getByPreId(orderId);
+            log.info(String.valueOf(drugList.size()));
+            if(prescription==null||drugList==null||drugList.size()==0){
+                return new Result(prescription,"获取失败",1);
+            }
+
             prescription.setDrugList(drugList);
             return new Result(prescription,"获取成功",0);
         }

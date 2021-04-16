@@ -26,5 +26,8 @@ public class Prescription {
     private Integer userId;
     @TableField("create_time")
     private String createTime;
+    @TableId("order_id")
+    private String orderId;
+    @TableField(exist = false)
     private List<Drug>drugList;
 }

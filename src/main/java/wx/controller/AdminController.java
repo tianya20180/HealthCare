@@ -32,11 +32,20 @@ public class AdminController {
     private AdminService adminService;
 
 
-    @GetMapping("/getAllUser")
+    @GetMapping("/getAllAdmin")
     public Result getAllAdmin(){
         List<Admin>adminList=adminService.getAllAdmin();
         return new Result(adminList,"成功获取",0);
     }
+
+    @GetMapping("/getAllUser")
+    public Result getAllUser(){
+        List<User>userList=userService.getAllUser();
+        return new Result(userList,"成功获取",0);
+    }
+
+
+
     @PostMapping("/register")
     public Result register(@RequestBody Admin admin){
         if(admin==null){
@@ -105,12 +114,7 @@ public class AdminController {
         return new Result(authenticationList,"成功获取",0);
     }
 
-    @GetMapping("/getAllUser")
-    public Result getAllUser(){
-        List<User>userList=userService.getAllUser();
-        return new Result(userList,"成功获取",0);
 
-    }
     @GetMapping("/banUser")
     public Result banUser(Integer id){
         userService.changeUserStatus(id,0);
@@ -144,7 +148,9 @@ public class AdminController {
         return new Result(orderList,"成功获取",0);
     }
 
-
-
-
+    @GetMapping("/deleteOrder")
+    public Result deleteOrder(Integer id){
+        orderService.deleteOrder(id);
+        return new Result(null,"成功获取",0);
+    }
 }

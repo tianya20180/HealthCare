@@ -23,4 +23,6 @@ public class Drug {
     private String way;//药品使用方法
     @TableField("prescription_id")
     private Integer prescriptionId;
+    @TableId("order_id")
+    private String orderId;
 }

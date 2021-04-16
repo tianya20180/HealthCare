@@ -25,5 +25,6 @@ public class User {
     @TableField("follow_size")
     private Integer followSize;
     private Integer status;
-
+    @TableField("identity")
+    private Integer identity;//0 用户 1医生
 }

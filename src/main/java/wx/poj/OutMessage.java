@@ -17,4 +17,6 @@ public class OutMessage {
 
     private String time;
 
+    private String orderId;
+
 }

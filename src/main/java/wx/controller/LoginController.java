@@ -73,6 +73,7 @@ public class LoginController {
         }
         if(identity==0){
             User user=userService.checkUser(phone,password);
+            user.setIdentity(0);
             if(user!=null){
                 session.setAttribute("user",user);
                 session.setAttribute("identity",identity);
@@ -83,6 +84,7 @@ public class LoginController {
 
         }else if(identity==1){
             Doctor doctor=doctorService.checkDoctor(phone,password);
+            doctor.setIdentity(1);
             if(doctor!=null){
                 session.setAttribute("user",doctor);
                 session.setAttribute("identity",identity);

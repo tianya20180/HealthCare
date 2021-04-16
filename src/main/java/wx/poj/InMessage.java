@@ -18,6 +18,9 @@ public class InMessage {
 
     private String time;
 
+    private String orderId;
+
+
 
     public InMessage(String content){
         this.content=content;

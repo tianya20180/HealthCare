@@ -36,6 +36,8 @@ public class Doctor {
     private Integer money;
     @TableField("status")
     private Integer status;
+    private Integer identity;//0 用户 1医生
+
 
 
 }

@@ -1,6 +1,8 @@
 package wx.poj;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 /*
@@ -10,6 +12,7 @@ import lombok.Data;
 @Data
 @TableName("doctor")
 public class Doctor {
+    @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
     @TableField("user_name")
     private String userName;
@@ -37,7 +40,7 @@ public class Doctor {
     @TableField("status")
     private Integer status;
     private Integer identity;//0 用户 1医生
-
+    private Integer category;
 
 
 }

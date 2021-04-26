@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.UUID;
 @Slf4j
 @Controller
+@ResponseBody
 @CrossOrigin
 @RequestMapping("/user")
 public class UserController {
@@ -73,6 +74,12 @@ public class UserController {
         userService.changeAvatar(id,avatar);
         String path=dest.getPath();
         log.info("end change");
+
         return new Result(path,"更新头像成功",0);
+    }
+    @GetMapping("/get")
+    public Result getUser(Integer id){
+        User user=userService.getUserById(id);
+        return new Result(user,"成功",0);
     }
 }

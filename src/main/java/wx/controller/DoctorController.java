@@ -145,4 +145,10 @@ public class DoctorController {
         file.transferTo(dest);
         return dir+Filename;
     }
+    @GetMapping("/get")
+    public Result getUser(Integer id){
+        Doctor doctor=doctorService.getDoctorById(id);
+        return new Result(doctor,"成功",0);
+    }
 }
+

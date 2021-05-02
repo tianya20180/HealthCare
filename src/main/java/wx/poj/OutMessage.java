@@ -19,4 +19,6 @@ public class OutMessage {
 
     private String orderId;
 
+    private Integer type;
+
 }

@@ -5,11 +5,14 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.ToString;
+
 /*
 *
 * 医生实体类
 * */
 @Data
+@ToString
 @TableName("doctor")
 public class Doctor {
     @TableId(value = "id",type = IdType.AUTO)
@@ -41,6 +44,8 @@ public class Doctor {
     private Integer status;
     private Integer identity;//0 用户 1医生
     private Integer category;
+    @TableField(exist = false)
+    private String categoryName;
 
 
 }

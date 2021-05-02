@@ -19,4 +19,5 @@ public class Admin {
     private String phone;
     @TableField("create_time")
     private String createTime;
+    private String address;
 }

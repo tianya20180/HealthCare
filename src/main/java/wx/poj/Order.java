@@ -22,4 +22,8 @@ public class Order {
     @TableField("money")
     private Integer money;
     private Integer status;
+    @TableField(exist = false)
+    private String userName;
+    @TableField(exist = false)
+    private String doctorName;
 }

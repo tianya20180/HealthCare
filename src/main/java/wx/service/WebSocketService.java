@@ -31,7 +31,7 @@ public class WebSocketService {
     public void sendChatMessage(InMessage message) {
         log.info("from:"+message.getFromId()+"to:"+message.getToId()+"message:"+message.getContent());
         template.convertAndSend("/chat/single/"+message.getToId(),
-                new OutMessage(message.getFromId(), message.getContent(),message.getAvatar(),message.getTime(),message.getOrderId()));
+                new OutMessage(message.getFromId(), message.getContent(),message.getAvatar(),message.getTime(),message.getOrderId(),message.getType()));
     }
 
 

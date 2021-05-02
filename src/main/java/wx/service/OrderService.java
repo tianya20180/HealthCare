@@ -18,8 +18,9 @@ public class OrderService {
         orderMapper.insert(order);
     }
 
-    public List<Order> getAllOrder(){
+    public List<Order> getAllOrder(String startTime,String endTime){
         QueryWrapper<Order> wrapper=new QueryWrapper();
+        wrapper.between("create_time",startTime,endTime);
         return orderMapper.selectList(wrapper);
     }
 

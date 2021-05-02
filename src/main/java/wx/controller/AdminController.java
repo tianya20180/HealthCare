@@ -7,6 +7,7 @@ import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 import wx.poj.*;
 import wx.service.*;
+import wx.util.CategoryUtil;
 import wx.util.Result;
 import java.util.List;
 import javax.annotation.Resource;
@@ -111,8 +112,15 @@ public class AdminController {
     @GetMapping("/getAllAuthentiation")
     public Result getAllAuthentication(){
         List<Authentication>authenticationList=authenticationService.getAllAuthentication();
+        for(Authentication authentication:authenticationList){
+            int doctorId=authentication.getDoctorId();
+            Doctor doctor=doctorService.getDoctorById(doctorId);
+            authentication.setDoctorName(doctor.getUserName());
+            authentication.setCategoryName(CategoryUtil.convertCategory(authentication.getCategory()));
+        }
         return new Result(authenticationList,"成功获取",0);
     }
+
 
 
     @GetMapping("/banUser")
@@ -139,12 +147,21 @@ public class AdminController {
     @GetMapping("/getAllDoctor")
     public Result getAllDoctor(){
         List<Doctor>doctorList=doctorService.getAllDoctor();
+        for(Doctor doctor:doctorList){
+            doctor.setCategoryName(CategoryUtil.convertCategory(doctor.getCategory()));
+        }
         return new Result(doctorList,"成功获取",0);
     }
 
     @GetMapping("/getAllOrder")
-    public Result getAllOrder(){
-        List<Order>orderList=orderService.getAllOrder();
+    public Result getAllOrder(String start, String end){
+        List<Order>orderList=orderService.getAllOrder(start,end);
+        for(Order order:orderList){
+            Doctor doctor=doctorService.getDoctorById(order.getDoctorId());
+            User user=userService.getUserById(order.getUserId());
+            order.setUserName(user.getUserName());
+            order.setDoctorName(doctor.getUserName());
+        }
         return new Result(orderList,"成功获取",0);
     }
 

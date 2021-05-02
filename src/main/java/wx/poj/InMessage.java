@@ -16,6 +16,8 @@ public class InMessage {
 
     private String avatar;
 
+    private Integer type;//0:消息  1：图片
+
     private String time;
 
     private String orderId;

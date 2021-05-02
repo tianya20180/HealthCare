@@ -10,11 +10,16 @@ import wx.poj.Doctor;
 import wx.poj.User;
 import wx.service.AuthenticationService;
 import wx.service.DoctorService;
+import wx.util.Base64Util;
+import wx.util.ImageUtil;
 import wx.util.Result;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.print.Doc;
 import javax.servlet.http.HttpServletRequest;
@@ -99,36 +104,22 @@ public class DoctorController {
         log.info("end change");
         return new Result(path,"更新头像成功",0);
     }
+    public String watermark(String base64,String id){
+        String imagePath ="c:\\image\\test\\"+id+".jpg";
+        Base64Util.GenerateImage(base64,imagePath);
+        ImageUtil.pressText("此图片仅供审核使用",imagePath,"宋体",0,new Color(248,248,255),50,20,20);
+        return Base64Util.GetImageStr(imagePath);
+    }
 
     @PostMapping("/authentication")
-    public Result authentication(@RequestParam(value = "card") MultipartFile card,
-                                 @RequestParam(value = "hospital") MultipartFile hospital,
-                                 @RequestParam(value = "doctor") MultipartFile doctor,Integer doctorId) throws IOException {
-        String cardPath="C:\\Users\\wangxi\\Desktop\\谷芽平台\\HealthyCare-Web\\static\\authentication\\card";
-        String hospitalPath="C:\\Users\\wangxi\\Desktop\\谷芽平台\\HealthyCare-Web\\static\\authentication\\hospital";
-        String doctorPath="C:\\Users\\wangxi\\Desktop\\谷芽平台\\HealthyCare-Web\\static\\authentication\\doctor";
-        File cardDir=new File(cardPath);
-        File hospitalDir=new File(hospitalPath);
-        File doctorDir=new File(doctorPath);
-        if(!cardDir.exists()){
-            cardDir.mkdirs();
-        }
-        if(!hospitalDir.exists()){
-            hospitalDir.mkdirs();
-        }
-        if(!doctorDir.exists()){
-            doctorDir.mkdirs();
-        }
-        String cardFileName=makeFile(card,cardDir);
-        String hospitalFileName=makeFile(hospital,hospitalDir);
-        String doctorFileName=makeFile(doctor,doctorDir);
-
-        Authentication authentication=new Authentication();
-        authentication.setCardPath(cardFileName);
-        authentication.setDoctorPath(hospitalFileName);
-        authentication.setHospitalPath(doctorFileName);
+    public Result authentication(@RequestBody  Authentication authentication) throws IOException {
+        log.info(authentication.toString());
         authentication.setStatus(0);
-        authentication.setDoctorId(doctorId);
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date= sdf.format(new Date());
+        authentication.setCreateTime(date);
+        authentication.setCardPhoto(watermark(authentication.getCardPhoto(),date));
+        authentication.setDoctorPhoto(watermark(authentication.getDoctorPhoto(),date));
         authenticationService.addAuthentication(authentication);
         return new Result(null,"上传成功",0);
     }

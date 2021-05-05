@@ -105,9 +105,10 @@ public class DoctorController {
         return new Result(path,"更新头像成功",0);
     }
     public String watermark(String base64,String id){
-        String imagePath ="c:\\image\\test\\"+id+".jpg";
+        String imagePath ="c:\\image\\test\\test.jpg";
+        log.info(imagePath);
         Base64Util.GenerateImage(base64,imagePath);
-        ImageUtil.pressText("此图片仅供审核使用",imagePath,"宋体",0,new Color(248,248,255),50,20,20);
+        ImageUtil.pressText("此图片仅供审核使用",imagePath,"宋体",0,new Color(248,248,255),50,40,40);
         return Base64Util.GetImageStr(imagePath);
     }
 
@@ -118,8 +119,9 @@ public class DoctorController {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date= sdf.format(new Date());
         authentication.setCreateTime(date);
-        authentication.setCardPhoto(watermark(authentication.getCardPhoto(),date));
-        authentication.setDoctorPhoto(watermark(authentication.getDoctorPhoto(),date));
+
+        authentication.setCardPhoto(watermark(authentication.getCardPhoto().substring(23),date));
+        authentication.setDoctorPhoto(watermark(authentication.getDoctorPhoto().substring(23),date));
         authenticationService.addAuthentication(authentication);
         return new Result(null,"上传成功",0);
     }

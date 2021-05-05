@@ -3,11 +3,15 @@ package wx.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import wx.mapper.MessageListMapper;
 import wx.poj.MessageList;
 import java.util.List;
 import javax.annotation.Resource;
 
+@Slf4j
+@Service
 public class MessageListService {
 
     @Resource
@@ -24,6 +28,7 @@ public class MessageListService {
     }
 
     public List<MessageList> getByUserId(Integer userId){
+
         QueryWrapper<MessageList>queryWrapper=new QueryWrapper<>();
         queryWrapper.eq("user_id",userId);
         return messageListMapper.selectList(queryWrapper);

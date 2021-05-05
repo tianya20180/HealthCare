@@ -11,6 +11,7 @@ import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
+import org.springframework.web.socket.config.annotation.WebSocketTransportRegistration;
 
 /**
  * @author xub
@@ -24,11 +25,23 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
 
-    /**
+        @Override
+        public void configureWebSocketTransport(WebSocketTransportRegistration registration) {
+            registration.setSendTimeLimit(15 * 1000)
+                    .setSendBufferSizeLimit(10* 1024)
+                    // max message size 2GB (2048 bytes) : default is 64KB
+                    .setMessageSizeLimit(2 * 1024 * 1024);
+        }
+
+        /**
      * 配置基站
      */
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/endpoint-websocket").addInterceptors(new HttpHandShakeIntecepter()).setAllowedOrigins("*").withSockJS();
+        registry.addEndpoint("/endpoint-websocket").
+                addInterceptors(new HttpHandShakeIntecepter()).
+                setAllowedOrigins("*").withSockJS().
+                setStreamBytesLimit(15 * 1024)
+                .setHttpMessageCacheSize(15 * 1024);;
 
     }
 

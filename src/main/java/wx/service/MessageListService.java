@@ -24,6 +24,7 @@ public class MessageListService {
     public List<MessageList> getByDoctorId(Integer doctorId){
         QueryWrapper<MessageList>queryWrapper=new QueryWrapper<>();
         queryWrapper.eq("doctor_id",doctorId);
+        queryWrapper.eq("type",0);
         return messageListMapper.selectList(queryWrapper);
     }
 
@@ -31,6 +32,7 @@ public class MessageListService {
 
         QueryWrapper<MessageList>queryWrapper=new QueryWrapper<>();
         queryWrapper.eq("user_id",userId);
+        queryWrapper.eq("type",1);
         return messageListMapper.selectList(queryWrapper);
     }
 

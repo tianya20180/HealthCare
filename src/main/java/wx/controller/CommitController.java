@@ -30,6 +30,9 @@ public class CommitController {
 
     @GetMapping("/add")
     public Result addCommit(String userName,Integer doctorId,String content){
+        if(userName==null||doctorId==null||content==null){
+            return new Result(null,"内容为空",0);
+        }
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date= sdf.format(new Date());
         Commit commit=new Commit();

@@ -40,6 +40,7 @@ public class DoctorService {
 
     public List<Doctor>getDoctorListByTime(){
         QueryWrapper<Doctor>wrapper=new QueryWrapper();
+        wrapper.eq("status",1);
         wrapper.orderByDesc("create_time");
         return doctorMapper.selectList(wrapper);
     }
@@ -47,6 +48,7 @@ public class DoctorService {
     public List<Doctor>getDoctorListByCategory(Integer category){
         QueryWrapper<Doctor>wrapper=new QueryWrapper();
         wrapper.eq("category",category);
+        wrapper.eq("status",1);
         return doctorMapper.selectList(wrapper);
     }
 
@@ -67,6 +69,7 @@ public class DoctorService {
     }
     public void updateDoctor(Doctor doctor){
         UpdateWrapper<Doctor> wrapper=new UpdateWrapper();
+
         doctorMapper.update(doctor,wrapper);
     }
     public List<Doctor>getAllDoctor(){

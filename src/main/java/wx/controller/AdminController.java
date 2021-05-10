@@ -93,7 +93,7 @@ public class AdminController {
           }
           Doctor doctor=doctorService.getDoctorById(doctorId);
           doctor.setStatus(1);
-          doctorService.updateDoctor(doctor);
+          doctorService.updateDoctor(doctorId,doctor);
           authenticationService.setStatus(authenticationId,1);
           return new Result(null,"已成功批准",0);
     }
@@ -104,7 +104,7 @@ public class AdminController {
         }
         Doctor doctor=doctorService.getDoctorById(doctorId);
         doctor.setStatus(0);
-        doctorService.updateDoctor(doctor);
+        doctorService.updateDoctor(doctorId,doctor);
         authenticationService.setStatus(authenticationId,0);
         return new Result(null,"已成功批准",0);
     }

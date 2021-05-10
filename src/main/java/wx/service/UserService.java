@@ -51,8 +51,9 @@ public class UserService {
         userMapper.update(null,wrapper);
     }
 
-    public void updateUser(User user){
+    public void updateUser(Integer id,User user){
         UpdateWrapper<User> wrapper=new UpdateWrapper();
+        wrapper.eq("id",id);
         userMapper.update(user,wrapper);
     }
     public List<User>getAllUser(){

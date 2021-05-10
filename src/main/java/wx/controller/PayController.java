@@ -55,8 +55,8 @@ public class PayController {
             }
             user.setMoney(userMoney-needMoney);
             doctor.setMoney(doctor.getMoney()+needMoney);
-            userService.updateUser(order.getUserId(),user);
-            doctorService.updateDoctor(order.getDoctorId(),doctor);
+            userService.updateMoney(user.getId(),user.getMoney());
+            doctorService.updateMoney(doctor.getId(),doctor.getMoney());
             orderService.changeStatus(1);
             return new Result(null,"付款成功",0);
 

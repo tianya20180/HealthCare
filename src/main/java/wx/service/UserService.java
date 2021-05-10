@@ -53,9 +53,17 @@ public class UserService {
 
     public void updateUser(Integer id,User user){
         UpdateWrapper<User> wrapper=new UpdateWrapper();
-        wrapper.eq("id",id);
-        userMapper.update(user,wrapper);
+        userMapper.updateById(user);
     }
+
+    public void updateMoney(Integer id,Integer money){
+        UpdateWrapper<User> wrapper=new UpdateWrapper();
+        wrapper.eq("id",id).set("money",money);
+        userMapper.update(null,wrapper);
+    }
+
+
+
     public List<User>getAllUser(){
         QueryWrapper<User> wrapper=new QueryWrapper();
         return userMapper.selectList(wrapper);

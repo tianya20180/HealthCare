@@ -73,8 +73,9 @@ public class LoginController {
         }
         if(identity==0){
             User user=userService.checkUser(phone,password);
-            user.setIdentity(0);
+
             if(user!=null){
+                user.setIdentity(0);
                 session.setAttribute("user",user);
                 session.setAttribute("identity",identity);
                 log.info(session.getId());
@@ -84,8 +85,8 @@ public class LoginController {
 
         }else if(identity==1){
             Doctor doctor=doctorService.checkDoctor(phone,password);
-            doctor.setIdentity(1);
             if(doctor!=null){
+                doctor.setIdentity(1);
                 session.setAttribute("user",doctor);
                 session.setAttribute("identity",identity);
                 return new Result(doctor,"登录成功",0);

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0bdbfb6b-64dd-4932-a60c-8655086974c0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/MessageListService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/MessageListService.java" afterDir="false" />
-    </list>
+    <list default="true" id="0bdbfb6b-64dd-4932-a60c-8655086974c0" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +138,7 @@
       <workItem from="1620531095585" duration="611000" />
       <workItem from="1620544583461" duration="10367000" />
       <workItem from="1620566398046" duration="5245000" />
-      <workItem from="1620607963377" duration="5877000" />
+      <workItem from="1620607963377" duration="6141000" />
     </task>
     <servers />
   </component>

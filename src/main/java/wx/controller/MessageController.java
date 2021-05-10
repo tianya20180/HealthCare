@@ -4,16 +4,21 @@ package wx.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import wx.poj.Doctor;
 import wx.poj.Message;
 import wx.poj.MessageList;
+import wx.poj.User;
+import wx.service.DoctorService;
 import wx.service.MessageListService;
 import wx.service.MessageService;
+import wx.service.UserService;
 import wx.util.Result;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
+import javax.print.Doc;
 
 @Slf4j
 @Controller
@@ -25,13 +30,21 @@ public class MessageController {
     private MessageListService messageListService;
     @Resource
     private MessageService messageService;
+    @Resource
+    private UserService userService;
+    @Resource
+    private DoctorService doctorService;
 
     @PostMapping("/add")
     public Result addMessage(@RequestBody MessageList messageList){
         if(messageList.getType()==0){
             messageList.setMsgId(messageList.getUserId()+"-"+messageList.getDoctorId());
+            User user=userService.getUserById(messageList.getUserId());
+            messageList.setUserName(user.getUserName());
         }else{
             messageList.setMsgId(+messageList.getDoctorId()+"-"+messageList.getUserId());
+            Doctor doctor=doctorService.getDoctorById(messageList.getDoctorId());
+            messageList.setUserName(doctor.getUserName());
         }
         if(messageListService.isExists(messageList.getMsgId())!=null){
             messageList=messageListService.isExists(messageList.getMsgId());
@@ -43,7 +56,7 @@ public class MessageController {
         String date= sdf.format(new Date());
         messageList.setUnreadCount(1);
         messageList.setCreateTime(date);
-        messageList.setUserName("wangxi");
+
         messageListService.addMessageList(messageList);
         return new Result(null,"添加成功",0);
     }

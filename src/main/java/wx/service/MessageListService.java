@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import wx.mapper.MessageListMapper;
+import wx.poj.Doctor;
 import wx.poj.MessageList;
 import java.util.List;
 import javax.annotation.Resource;
@@ -48,6 +49,11 @@ public class MessageListService {
         messageListMapper.update(messageList,updateWrapper);
     }
 
+    public void changeReadCount(Integer id,int count){
+        UpdateWrapper<MessageList> wrapper=new UpdateWrapper();
+        wrapper.eq("id",id).set("unread",count);
+        messageListMapper.update(null,wrapper);
+    }
 
 
 

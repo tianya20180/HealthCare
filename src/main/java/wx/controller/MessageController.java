@@ -36,7 +36,7 @@ public class MessageController {
         if(messageListService.isExists(messageList.getMsgId())!=null){
             messageList=messageListService.isExists(messageList.getMsgId());
             messageList.setUnreadCount(messageList.getUnreadCount()+1);
-            messageListService.updateMessage(messageList);
+            messageListService.changeReadCount(messageList.getId(),messageList.getUnreadCount());
             return new Result(null,"添加成功",0);
         }
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

@@ -5,9 +5,8 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.sun.xml.internal.bind.marshaller.MinimumEscapeHandler;
 import org.springframework.stereotype.Service;
 import wx.mapper.MessageMapper;
-import wx.poj.InMessage;
-import wx.poj.Information;
-import wx.poj.Message;
+import wx.poj.*;
+
 import java.util.List;
 import javax.annotation.Resource;
 
@@ -19,6 +18,7 @@ public class MessageService {
 
 
     public Integer addMessage(InMessage message){
+        message.setMsgId(message.getFromId()+"-"+message.getToId());
         int id=messageMapper.insert(message);
         return id;
     }

@@ -4,10 +4,7 @@ package wx.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import wx.poj.Doctor;
-import wx.poj.Message;
-import wx.poj.MessageList;
-import wx.poj.User;
+import wx.poj.*;
 import wx.service.DoctorService;
 import wx.service.MessageListService;
 import wx.service.MessageService;
@@ -76,17 +73,29 @@ public class MessageController {
     }
 
 
-
+/*
     @GetMapping("/get")
-    public Result getMessage(String id){
+    public Result getMessage(Integer id){
         List<Message>messageList=messageService.getMessage(id);
         return new Result(messageList,"插入成功",0);
     }
+*/
 
+    @GetMapping("/user/get_offline")
+    public Result getOfflineMessageByUser(Integer userId){
+        List<InMessage>messageLists=messageService.getOfflineMessageByUserId(userId);
+        for(InMessage message:messageLists){
+            messageService.changeRead(message.getId());
+        }
+        return new Result(messageLists,"获取成功",0);
+    }
 
-    @GetMapping("/get_offline")
-    public Result getOfflineMessage(String id){
-        List<Message>messageLists=messageService.getOffLineMessage(id);
+    @GetMapping("/doctor/get_offline")
+    public Result getOfflineMessage(Integer doctorId){
+        List<InMessage>messageLists=messageService.getOffLineMessageByDoctorId(doctorId);
+        for(InMessage message:messageLists){
+            messageService.changeRead(message.getId());
+        }
         return new Result(messageLists,"获取成功",0);
     }
 
@@ -95,8 +104,28 @@ public class MessageController {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date= sdf.format(new Date());
         message.setCreateTime(date);
-        messageService.addMessage(message);
+        message.setRead(false);
+       // messageService.addMessage(InMessage);
         return new Result(null,"获取成功",0);
+    }
+
+
+    @GetMapping("/batch/change_status")
+    public Result changeMessageStatus(List<Integer>ids){
+        if(ids==null||ids.size()==0)
+            return new Result(null,"id为空",0);
+        for(Integer id:ids){
+            messageService.changeRead(id);
+        }
+        return new Result(null,"修改状态成功",1);
+    }
+
+    @GetMapping("/change_status")
+    public Result changeMessageStatus(Integer id){
+        if(id==null)
+            return new Result(null,"id为空",0);
+        messageService.changeRead(id);
+        return new Result(null,"修改状态成功",1);
     }
 
 

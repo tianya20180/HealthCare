@@ -15,10 +15,10 @@ public class Message {
     private Integer id;
     @TableField("msg_id")
     private String msgId;
-    @TableField("from_id")
-    private String fromId;
-    @TableField("to_id")
-    private String toId;
+    @TableField("doctor_id")
+    private Integer doctorId;
+    @TableField("user_id")
+    private Integer userId;
     @TableField("avatar")
     private String avatar;
     @TableField("is_read")

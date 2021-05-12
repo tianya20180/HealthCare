@@ -1,7 +1,8 @@
 package wx.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import wx.poj.InMessage;
 import wx.poj.Message;
 
-public  interface MessageMapper extends BaseMapper<Message> {
+public  interface MessageMapper extends BaseMapper<InMessage> {
 }

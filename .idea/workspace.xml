@@ -3,8 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="0bdbfb6b-64dd-4932-a60c-8655086974c0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/MessageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/PTPController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/PTPController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/mapper/MessageMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/mapper/MessageMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/InMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/poj/InMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/poj/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/OutMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/poj/OutMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/MessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/WebSocketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/WebSocketService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,13 +59,13 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\wangxi\Downloads\HealthCare-backend\src\main\resources\static\ptp" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\wangxi\Downloads\HealthCare-backend\src\main\resources\static\ptp" />
       <recent name="C:\Users\wangxi\Downloads\HealthCare-backend\src\main\resources\static" />
       <recent name="C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\inteceptor" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\wangxi\Downloads\HealthCare-backend\src\main\resources\static\ptp" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -144,6 +150,7 @@
       <workItem from="1620566398046" duration="5245000" />
       <workItem from="1620607963377" duration="6427000" />
       <workItem from="1620628900470" duration="7211000" />
+      <workItem from="1620818773784" duration="5833000" />
     </task>
     <servers />
   </component>
@@ -188,17 +195,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/wx/controller/MessageController.java</url>
-          <line>66</line>
+          <line>63</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/wx/controller/MessageController.java</url>
-          <line>73</line>
+          <line>70</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/wx/controller/MessageController.java</url>
-          <line>81</line>
+          <line>78</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>

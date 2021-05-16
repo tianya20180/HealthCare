@@ -3,7 +3,9 @@ package wx.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import wx.poj.Ask;
 import wx.poj.Order;
+import wx.service.AskService;
 import wx.service.OrderService;
 import wx.util.OrderUtil;
 import wx.util.Result;
@@ -23,6 +25,7 @@ public class OrderController {
     @Resource
     private OrderService orderService;
 
+
     @GetMapping("/addOrder")
     public Result addOrder(Integer userId,Integer doctorId,Integer money){
         Order order=new Order();
@@ -37,6 +40,7 @@ public class OrderController {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date= sdf.format(new Date());
         order.setCreateTime(date);
+
         orderService.addOrder(order);
         return new Result(order,"添加成功",0);
     }

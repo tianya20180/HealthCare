@@ -26,7 +26,7 @@ public class MessageService {
     public List<InMessage> getOffLineMessageByDoctorId(Integer id){
         QueryWrapper<InMessage>queryWrapper=new QueryWrapper<>();
         queryWrapper.eq("to_id",id);
-        queryWrapper.eq("is_read",false);
+        queryWrapper.eq("is_read",0);
         queryWrapper.eq("send_type",0);
         queryWrapper.orderByDesc("create_time");
         return messageMapper.selectList(queryWrapper);
@@ -35,17 +35,16 @@ public class MessageService {
     public List<InMessage>getOfflineMessageByUserId(Integer id){
         QueryWrapper<InMessage>queryWrapper=new QueryWrapper<>();
         queryWrapper.eq("to_id",id);
-        queryWrapper.eq("is_read",false);
+        queryWrapper.eq("is_read",0);
         queryWrapper.eq("send_type",1);
         queryWrapper.orderByDesc("create_time");
         return messageMapper.selectList(queryWrapper);
     }
 
 
-    public void changeRead(Integer toId){
+    public void changeRead(Integer id){
         UpdateWrapper<InMessage>updateWrapper=new UpdateWrapper<>();
-        updateWrapper.set("is_read",true);
-        updateWrapper.eq("to_id",toId);
+        updateWrapper.eq("id",id).set("is_read",1);
         messageMapper.update(null,updateWrapper);
     }
 

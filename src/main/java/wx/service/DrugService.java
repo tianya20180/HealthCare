@@ -24,5 +24,11 @@ public class DrugService {
         return drugMapper.selectList(queryWrapper);
     }
 
+    public List<Drug>search(String name){
+        QueryWrapper<Drug>queryWrapper=new QueryWrapper<Drug>();
+        queryWrapper.like("drug_name",name);
+        return drugMapper.selectList(queryWrapper);
+    }
+
 
 }

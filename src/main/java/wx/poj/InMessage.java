@@ -26,7 +26,7 @@ public class InMessage {
     @TableField("avatar")
     private String avatar;
     @TableField("is_read")
-    private boolean isRead;
+    private Integer isRead;
     @TableField("content")
     private String content;
     @TableField("content_type")

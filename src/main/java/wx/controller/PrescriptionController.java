@@ -37,6 +37,17 @@ public class PrescriptionController {
             return new Result(null,"新增成功",0);
         }
 
+
+
+    @GetMapping("/search/drug")
+    public Result searchDrug(String name){
+        if(name==null)
+            return new Result(null,"Drug为空",1);
+        List<Drug>drugList=drugService.search(name);
+        return new Result(drugList,"新增成功",0);
+    }
+
+
         @GetMapping("/addPrescription")
         public Result addPrescription(Integer doctorId,Integer userId,String orderId){
             if(doctorId==null||userId==null)

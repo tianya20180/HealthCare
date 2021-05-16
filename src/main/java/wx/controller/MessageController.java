@@ -70,6 +70,7 @@ public class MessageController {
     public Result getOfflineMessageByUser(Integer userId){
         List<InMessage>messageLists=messageService.getOfflineMessageByUserId(userId);
         for(InMessage message:messageLists){
+            log.info(message.getId().toString());
             messageService.changeRead(message.getId());
         }
         return new Result(messageLists,"获取成功",0);
@@ -89,7 +90,7 @@ public class MessageController {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date= sdf.format(new Date());
         message.setCreateTime(date);
-        message.setRead(false);
+        message.setIsRead(0);
        // messageService.addMessage(InMessage);
         return new Result(null,"获取成功",0);
     }

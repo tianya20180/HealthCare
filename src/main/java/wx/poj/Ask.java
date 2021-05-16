@@ -8,23 +8,17 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.ToString;
 
-import javax.validation.constraintvalidation.SupportedValidationTarget;
-
 @Data
 @ToString
-@TableName("information")
-public class Information {
+@TableName("ask")
+public class Ask {
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
+    @TableField("create_time")
+    private String createTime;
     @TableField("user_id")
     private Integer userId;
-    @TableField("order_id")
-    private String orderId;
-    private Integer height;
-    private Integer weight;
-    @TableField("des")
-    private String des;
-    private Integer times;
-    private Integer age;
-
+    @TableField("doctor_id")
+    private Integer doctorId;
+    private Integer status;//0 问诊结束 1问诊中
 }

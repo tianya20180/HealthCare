@@ -3,8 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="0bdbfb6b-64dd-4932-a60c-8655086974c0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/InformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/InformationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/MessageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/PTPController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/PTPController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/PayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/PayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/InMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/poj/InMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/Information.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/poj/Information.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/poj/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/MessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/WebSocketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/WebSocketService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -144,7 +152,8 @@
       <workItem from="1620566398046" duration="5245000" />
       <workItem from="1620607963377" duration="6427000" />
       <workItem from="1620628900470" duration="7211000" />
-      <workItem from="1620818773784" duration="7853000" />
+      <workItem from="1620818773784" duration="30560000" />
+      <workItem from="1621164068569" duration="5436000" />
     </task>
     <servers />
   </component>
@@ -201,6 +210,96 @@
           <url>file://$PROJECT_DIR$/src/main/java/wx/controller/MessageController.java</url>
           <line>63</line>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/wx/controller/PTPController.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/wx/service/MessageService.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/wx/service/MessageService.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/wx/service/MessageService.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/wx/service/WebSocketService.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/wx/service/WebSocketService.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/wx/service/WebSocketService.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/wx/service/WebSocketService.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/wx/controller/PayController.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/wx/controller/PayController.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/wx/controller/PayController.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/wx/controller/MessageController.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/wx/controller/MessageController.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/wx/controller/MessageController.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/wx/controller/MessageController.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/wx/service/MessageService.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/wx/service/MessageService.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/wx/service/MessageService.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

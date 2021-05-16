@@ -24,13 +24,8 @@ public class PTPController {
 
     @MessageMapping("/ptp/single/chat")
     public void singleChat(InMessage inMsg){
-        log.info("sending");
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String date= sdf.format(new Date());
-        inMsg.setCreateTime(date);
-        inMsg.setRead(false);
-        Integer id=messageService.addMessage(inMsg);
-        inMsg.setId(id);
+
+
         ws.sendChatMessage(inMsg);
     }
 

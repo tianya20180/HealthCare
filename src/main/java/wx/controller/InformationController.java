@@ -24,7 +24,8 @@ public class InformationController {
     private InformationService informationService;
 
     @PostMapping("/add")
-    public Result addInformation(Information information){
+    public Result addInformation(@RequestBody  Information information){
+        log.info(information.toString());
         informationService.addInformation(information);
         return new Result(null,"新增成功",0);
     }

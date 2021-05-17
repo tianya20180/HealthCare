@@ -20,5 +20,7 @@ public class Ask {
     private Integer userId;
     @TableField("doctor_id")
     private Integer doctorId;
+    @TableField("order_id")
+    private String orderId;
     private Integer status;//0 问诊结束 1问诊中
 }

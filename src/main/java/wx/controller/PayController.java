@@ -70,7 +70,8 @@ public class PayController {
                 newAsk.setUserId(order.getUserId());
                 newAsk.setDoctorId(order.getDoctorId());
                 newAsk.setCreateTime(date);
-                askService.addAsk(ask);
+                newAsk.setOrderId(orderId);
+                askService.addAsk(newAsk);
             }else{
                 askService.changeOrder(order.getUserId(),order.getDoctorId(),orderId);
                 askService.changeStatus(order.getUserId(),order.getDoctorId(),1);

@@ -21,16 +21,16 @@ public class AskService {
 
     public void changeStatus(Integer userId,Integer doctorId,Integer status){
         UpdateWrapper<Ask> updateWrapper=new UpdateWrapper<>();
-        updateWrapper.eq("userId",userId);
-        updateWrapper.eq("doctorId",doctorId);
+        updateWrapper.eq("user_id",userId);
+        updateWrapper.eq("doctor_id",doctorId);
         updateWrapper.set("status",status);
         askMapper.update(null,updateWrapper);
     }
 
     public void changeOrder(Integer userId,Integer doctorId,String order){
         UpdateWrapper<Ask> updateWrapper=new UpdateWrapper<>();
-        updateWrapper.eq("userId",userId);
-        updateWrapper.eq("doctorId",doctorId);
+        updateWrapper.eq("user_id",userId);
+        updateWrapper.eq("doctor_id",doctorId);
         updateWrapper.set("order",order);
         askMapper.update(null,updateWrapper);
     }
@@ -38,8 +38,8 @@ public class AskService {
 
     public Ask getAsk(Integer userId,Integer doctorId){
         QueryWrapper<Ask> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("userId",userId);
-        queryWrapper.eq("doctorId",doctorId);
+        queryWrapper.eq("user_id",userId);
+        queryWrapper.eq("doctor_id",doctorId);
         return askMapper.selectOne(queryWrapper);
     }
 }

@@ -24,9 +24,9 @@ public class OrderService {
         return orderMapper.selectList(wrapper);
     }
 
-    public void changeStatus(Integer status){
+    public void changeStatus(Integer status,String orderId){
         UpdateWrapper<Order>wrapper=new UpdateWrapper<Order>();
-        wrapper.set("status",status);
+        wrapper.eq("order_id",orderId).set("status",status);
         orderMapper.update(null,wrapper);
     }
 

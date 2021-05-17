@@ -46,11 +46,11 @@ public class OrderController {
     }
 
     @GetMapping("/changeStatus")
-    public Result changeStatus(Integer status){
+    public Result changeStatus(Integer status,String orderId){
         if(status==null){
             return new Result(null,"status为空",1);
         }
-        orderService.changeStatus(status);
+        orderService.changeStatus(status,orderId);
         return new Result(null,"更新状态成功",0);
     }
 

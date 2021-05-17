@@ -6,3 +6,16 @@ spring:
     # 6.x版本的MySQL JDBC驱动类为com.mysql.cj.jdbc.Driver
     # 5.X版本的MySQL JDBC驱动类为com.mysql.jdbc.Driver
     driver-class-name: com.mysql.cj.jdbc.Driver
+redis:
+  database: 1
+  host: 127.0.0.1
+  password: fanyu@2018
+  port: 6379
+  timeout: 3000
+  jedis:
+    pool:
+      max-idle: 500
+      min-idle: 50
+      max-active: 2000
+      max-wait: 1000
+  testOnBorrow: true

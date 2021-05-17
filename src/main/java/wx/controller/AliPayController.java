@@ -1,25 +1,28 @@
 package wx.controller;
 
+import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import wx.config.AlipayConfig;
 import wx.poj.Doctor;
 import wx.poj.Order;
 import wx.service.DoctorService;
 import wx.service.OrderService;
+import wx.util.Result;
+
 import java.util.*;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 @Slf4j
 @Controller
 @CrossOrigin
@@ -43,17 +46,16 @@ public class AliPayController {
      * @Title: AlipayController.java
      * @Description: 前往支付宝第三方网关进行支付
      * Copyright: Copyright (c) 2019
-     * Company:FURUIBOKE.SCIENCE.AND.TECHNOLOGY
+     * Company:FURUIBOKE.SCIENCE.AND.TECHNOLOGY`
      * @Classname AlipayController
      * @Description notify_url 和 return_url 需要外网可以访问，建议natapp 内网穿透
-     * @Date 2019/3/21 20:40
-     * @Created by 爆裂无球
+     *
+     *
      */
-    @PostMapping("/goAlipay")
-    public String goAlipay(String orderId, HttpServletRequest request, HttpServletRequest response) throws Exception {
-
+    @GetMapping("/goAlipay")
+    public Result goAlipay(String orderId, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        System.out.println(orderId);
         Order order = ordersService.getOrderById(orderId);
-
         Doctor doctor = doctorService.getDoctorById(order.getDoctorId());
 
         //获得初始化的AlipayClient
@@ -86,9 +88,18 @@ public class AliPayController {
 
 
         //请求
-        String result = alipayClient.pageExecute(alipayRequest).getBody();
-
-        return result;
+        /*
+        String form="";
+        try {
+        } catch (AlipayApiException e) {
+            e.printStackTrace();
+        }
+        response.setContentType("text/html;charset=" + AlipayConfig.CHARSET);
+        response.getWriter().write(form);//直接将完整的表单html输出到页面
+        response.getWriter().flush();
+        response.getWriter().close();*/
+        String result = alipayClient.pageExecute(alipayRequest).getBody(); //调用SDK生成表单
+        return new Result(result,"ok",0);
     }
 
 
@@ -109,7 +120,7 @@ public class AliPayController {
      * @Date 2019/3/22 01:31
      * @Created by 爆裂无球
      */
-    @RequestMapping("/alipayReturnNotice")
+    @GetMapping("/alipayReturnNotice")
     public String alipayReturnNotice(HttpServletRequest request, HttpServletRequest response, Map map) throws Exception {
 
         LOGGER.info("支付成功, 进入同步通知接口...");
@@ -131,7 +142,7 @@ public class AliPayController {
         }
 
         boolean signVerified = AlipaySignature.rsaCheckV1(params, AlipayConfig.ALIPAY_PUBLIC_KEY, AlipayConfig.CHARSET, AlipayConfig.sign_type); //调用SDK验证签名
-
+        Doctor doctor=null;
 
         //——请在这里编写您的程序（以下代码仅作参考）——
         if (signVerified) {
@@ -149,7 +160,7 @@ public class AliPayController {
 
             //页面  展示
             Order order = ordersService.getOrderById(out_trade_no);
-            Doctor doctor = doctorService.getDoctorById(order.getDoctorId());
+             doctor = doctorService.getDoctorById(order.getDoctorId());
 
             LOGGER.info("********************** 支付成功(支付宝同步通知) **********************");
             LOGGER.info("* 订单号: {}", out_trade_no);
@@ -169,7 +180,7 @@ public class AliPayController {
         }
 
         //前后分离形式  直接返回页面 记得加上注解@Response  http://login.calidray.com你要返回的网址，再页面初始化时候让前端调用你其他接口，返回信息
-       String result = "<form action=\"http://login.calidray.com/?#/index/depreciation-scrap/depreciation\"  method=\"get\" name=\"form1\">\n" +
+       String result = "<form action=\"http://localhost:8000/#/information/?doctorId="+doctor.getId()+"\"  method=\"get\" name=\"form1\">\n" +
                "</form>\n" +
                "<script>document.forms[0].submit();</script>";
        return result;
@@ -201,11 +212,12 @@ public class AliPayController {
      * @Date 2019/3/22 01:45
      * @Created by 爆裂无球
      */
-    @RequestMapping(value = "/alipayNotifyNotice")
+    @GetMapping(value = "/alipayNotifyNotice")
     @ResponseBody
     public String alipayNotifyNotice(HttpServletRequest request, HttpServletRequest response) throws Exception {
 
         LOGGER.info("支付成功, 进入异步通知接口...");
+        System.out.println("支付成功, 进入异步通知接口...");
 
         //获取支付宝POST过来反馈信息
         Map<String, String> params = new HashMap<String, String>();
@@ -262,15 +274,14 @@ public class AliPayController {
                 //付款完成后，支付宝系统发送该交易状态通知
 
                 // 修改叮当状态，改为 支付成功，已付款; 同时新增支付流水
-                ordersService.changeStatus(1);
 
                 //这里不用 查  只是为了 看日志 查的方法应该卸载 同步回调 页面 中
                 Order order = ordersService.getOrderById(out_trade_no);
-
+                ordersService.changeStatus(1, out_trade_no);
                 Doctor doctor = doctorService.getDoctorById(order.getDoctorId());
 
                 LOGGER.info("********************** 支付成功(支付宝异步通知)查询 只是为了 看日志  **********************");
-                LOGGER.info("* 订单号: {}", out_trade_no);
+                LOGGER.info("* 订单号: {0}", out_trade_no);
                 LOGGER.info("* 支付宝交易号: {}", trade_no);
                 LOGGER.info("* 实付金额: {}", total_amount);
                 LOGGER.info("* 医生: {}", doctor.getUserName());

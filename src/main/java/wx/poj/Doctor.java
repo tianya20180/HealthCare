@@ -39,7 +39,7 @@ public class Doctor {
     private Integer count;
     @TableField("order_money")
     private Integer orderMoney;
-    private Integer money;
+    private double money;
     @TableField("status")
     private Integer status;
     private Integer identity;//0 用户 1医生

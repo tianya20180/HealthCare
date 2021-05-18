@@ -36,6 +36,7 @@ public class PayController {
 
         @GetMapping("/pay")
         public Result pay(String orderId){
+            /*
             if(orderId==null||orderId.equals("")){
                 return new Result(null,"orderId为空",1);
             }
@@ -79,7 +80,7 @@ public class PayController {
             userService.updateMoney(user.getId(),user.getMoney());
             doctorService.updateMoney(doctor.getId(),doctor.getMoney());
             orderService.changeStatus(1,orderId);
-
+*/
             return new Result(null,"付款成功",0);
 
         }

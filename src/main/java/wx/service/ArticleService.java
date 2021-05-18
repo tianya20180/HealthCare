@@ -36,6 +36,10 @@ public class ArticleService {
         return articleMapper.selectList(queryWrapper);
     }
 
-
+    public List<Article> getHotArticle(){
+        QueryWrapper<Article>queryWrapper=new QueryWrapper<>();
+        queryWrapper.orderByDesc("view_count");
+        return articleMapper.selectList(queryWrapper);
+    }
 
 }

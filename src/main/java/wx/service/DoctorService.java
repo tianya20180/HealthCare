@@ -67,7 +67,7 @@ public class DoctorService {
         wrapper.eq("id",id).set("avatar",avatar);
         doctorMapper.update(null,wrapper);
     }
-    public void updateMoney(Integer id,Integer money){
+    public void updateMoney(Integer id,double money){
         UpdateWrapper<Doctor> wrapper=new UpdateWrapper();
         wrapper.eq("id",id).set("money",money);
         doctorMapper.update(null,wrapper);

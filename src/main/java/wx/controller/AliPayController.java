@@ -13,12 +13,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import wx.config.AlipayConfig;
+import wx.poj.Ask;
 import wx.poj.Doctor;
 import wx.poj.Order;
+import wx.service.AskService;
 import wx.service.DoctorService;
 import wx.service.OrderService;
 import wx.util.Result;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,6 +42,8 @@ public class AliPayController {
     private OrderService ordersService;
     @Autowired
     private DoctorService doctorService;
+    @Autowired
+    private AskService askService;
 
     /**
      * 对应官方例子   alipay.trade.page.pay.jsp
@@ -143,11 +148,11 @@ public class AliPayController {
 
         boolean signVerified = AlipaySignature.rsaCheckV1(params, AlipayConfig.ALIPAY_PUBLIC_KEY, AlipayConfig.CHARSET, AlipayConfig.sign_type); //调用SDK验证签名
         Doctor doctor=null;
-
+        String out_trade_no="";
         //——请在这里编写您的程序（以下代码仅作参考）——
         if (signVerified) {
             //商户订单号
-            String out_trade_no = new String(request.getParameter("out_trade_no").getBytes("ISO-8859-1"), "UTF-8");
+             out_trade_no = new String(request.getParameter("out_trade_no").getBytes("ISO-8859-1"), "UTF-8");
 
             //支付宝交易号
             String trade_no = new String(request.getParameter("trade_no").getBytes("ISO-8859-1"), "UTF-8");
@@ -161,7 +166,23 @@ public class AliPayController {
             //页面  展示
             Order order = ordersService.getOrderById(out_trade_no);
              doctor = doctorService.getDoctorById(order.getDoctorId());
-
+             ordersService.changeStatus(1,out_trade_no);
+             doctorService.updateMoney(doctor.getId(),doctor.getMoney()+Double.valueOf(total_amount));
+            Ask ask=askService.getAsk(order.getUserId(),order.getDoctorId());
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String date= sdf.format(new Date());
+            if(ask==null){
+                Ask newAsk=new Ask();
+                newAsk.setStatus(1);
+                newAsk.setUserId(order.getUserId());
+                newAsk.setDoctorId(order.getDoctorId());
+                newAsk.setCreateTime(date);
+                newAsk.setOrderId(out_trade_no);
+                askService.addAsk(newAsk);
+            }else{
+                askService.changeOrder(order.getUserId(),order.getDoctorId(),out_trade_no);
+                askService.changeStatus(order.getUserId(),order.getDoctorId(),1);
+            }
             LOGGER.info("********************** 支付成功(支付宝同步通知) **********************");
             LOGGER.info("* 订单号: {}", out_trade_no);
             LOGGER.info("* 支付宝交易号: {}", trade_no);
@@ -180,7 +201,7 @@ public class AliPayController {
         }
 
         //前后分离形式  直接返回页面 记得加上注解@Response  http://login.calidray.com你要返回的网址，再页面初始化时候让前端调用你其他接口，返回信息
-       String result = "<form action=\"http://localhost:8000/#/information/?doctorId="+doctor.getId()+"\"  method=\"get\" name=\"form1\">\n" +
+       String result = "<form action=\"http://localhost:8000/#/information/?to="+doctor.getId()+"&orderId="+out_trade_no+"\"  method=\"get\" name=\"form1\">\n" +
                "</form>\n" +
                "<script>document.forms[0].submit();</script>";
        return result;

@@ -1,3 +1,5 @@
+C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\util\RedisUtil.java
+C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\util\SensitiveFilterUtil.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\controller\OrderController.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\poj\MessageResult.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\inteceptor\SocketChannelIntecepter.java
@@ -16,10 +18,12 @@ C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\controller\UserCon
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\mapper\AdminMapper.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\poj\Commit.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\poj\LoginUser.java
+C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\service\TaskService.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\mapper\PrescriptionMapper.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\websocket\ChatWebSocket.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\service\InformationService.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\mapper\CommitMapper.java
+C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\service\ArticleService.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\mapper\InformationMapper.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\poj\User.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\util\OrderUtil.java
@@ -68,7 +72,9 @@ C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\poj\Article.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\poj\Ask.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\service\DoctorService.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\controller\AdminController.java
+C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\mapper\ArticleMapper.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\controller\LoginController.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\service\AdminService.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\service\CommitService.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\service\PrescriptionService.java
+C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\config\RedisConfig.java

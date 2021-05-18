@@ -23,7 +23,15 @@ public class OrderService {
         wrapper.between("create_time",startTime,endTime);
         return orderMapper.selectList(wrapper);
     }
+      public List<Order> getAllOrders(){
+        QueryWrapper<Order> wrapper=new QueryWrapper();
+        return orderMapper.selectList(wrapper);
+    }
 
+    public int getOrderCount(){
+        QueryWrapper<Order> wrapper=new QueryWrapper();
+        return orderMapper.selectCount(wrapper);
+    }
     public void changeStatus(Integer status,String orderId){
         UpdateWrapper<Order>wrapper=new UpdateWrapper<Order>();
         wrapper.eq("order_id",orderId).set("status",status);

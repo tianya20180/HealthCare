@@ -9,6 +9,11 @@ import wx.poj.*;
 import wx.service.*;
 import wx.util.CategoryUtil;
 import wx.util.Result;
+import java.util.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -39,15 +44,52 @@ public class AdminController {
         return new Result(adminList,"成功获取",0);
     }
 
+    @GetMapping("/delete")
+    public Result deleteAdmin(Integer id){
+        adminService.delete(id);
+        return new Result(null,"成功删除",0);
+    }
+
     @GetMapping("/getAllUser")
     public Result getAllUser(){
         List<User>userList=userService.getAllUser();
         return new Result(userList,"成功获取",0);
     }
 
+    @GetMapping("/getData")
+    public Result getData(){
+        int userCount=userService.getUserCount();
+        int doctorCount=doctorService.getDoctorCount();
+        int orderCount=orderService.getOrderCount();
+        int adminCount=adminService.getAdminCount();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String end= sdf.format(new Date());
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        Date zero = calendar.getTime();
+        String start= sdf.format(zero);
+        int addUser=userService.getUserCountBetweenTime(start,end);
+        int addDoctor=doctorService.getDoctorCountBetweenTime(start,end);
+        int addAdmin=adminService.getAdminCountBetweenTime(start,end);
+        int addOrder=orderService.getAllOrder(start,end).size();
+        Map<String,Object>map=new HashMap<String,Object>();
+        map.put("userCount",userCount);
+        map.put("doctorCount",doctorCount);
+        map.put("orderCount",orderCount);
+        map.put("adminCount",adminCount);
+        map.put("newUser",addUser);
+        map.put("newOrder",addOrder);
+        map.put("newAdmin",addAdmin);
+        map.put("newDoctor",addDoctor);
+        return new Result(map,"成功获取",0);
+    }
 
 
-    @PostMapping("/register")
+
+    @PostMapping("/add")
     public Result register(@RequestBody Admin admin){
         if(admin==null){
             return new Result(null,"doctor为null",1);

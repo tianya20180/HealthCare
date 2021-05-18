@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import wx.mapper.UserMapper;
 import wx.poj.Doctor;
+import wx.poj.Order;
 import wx.poj.User;
 import wx.util.Result;
 import java.util.List;
@@ -78,8 +79,15 @@ public class UserService {
         userMapper.deleteById(id);
     }
 
-
-
+    public int getUserCount(){
+        QueryWrapper<User> wrapper=new QueryWrapper();
+        return userMapper.selectCount(wrapper);
+    }
+    public int getUserCountBetweenTime(String startTime,String endTime){
+        QueryWrapper<User> wrapper=new QueryWrapper();
+        wrapper.between("create_time",startTime,endTime);
+        return userMapper.selectCount(wrapper);
+    }
 
 
 }

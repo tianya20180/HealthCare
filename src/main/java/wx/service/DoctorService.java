@@ -90,4 +90,16 @@ public class DoctorService {
         doctorMapper.deleteById(id);
     }
 
+
+    public int getDoctorCount(){
+        QueryWrapper<Doctor> wrapper=new QueryWrapper();
+        return doctorMapper.selectCount(wrapper);
+    }
+
+    public int getDoctorCountBetweenTime(String startTime,String endTime){
+        QueryWrapper<Doctor> wrapper=new QueryWrapper();
+        wrapper.between("create_time",startTime,endTime);
+        return doctorMapper.selectCount(wrapper);
+    }
+
 }

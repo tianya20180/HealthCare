@@ -24,8 +24,10 @@ C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\websocket\ChatWebS
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\service\InformationService.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\mapper\CommitMapper.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\service\ArticleService.java
+C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\mapper\ArticleLikeMapper.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\mapper\InformationMapper.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\poj\User.java
+C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\service\ArticleLikeService.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\util\OrderUtil.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\Application.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\util\CategoryUtil.java
@@ -68,6 +70,7 @@ C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\enums\ChatTypeEnum
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\service\AuthenticationService.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\mapper\DoctorMapper.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\poj\InMessage.java
+C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\poj\ArticleLike.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\poj\Article.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\poj\Ask.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\service\DoctorService.java

@@ -167,6 +167,7 @@ public class AliPayController {
             Order order = ordersService.getOrderById(out_trade_no);
              doctor = doctorService.getDoctorById(order.getDoctorId());
              ordersService.changeStatus(1,out_trade_no);
+             doctorService.updateCount(doctor.getId(),doctor.getCount()+1);
              doctorService.updateMoney(doctor.getId(),doctor.getMoney()+Double.valueOf(total_amount));
             Ask ask=askService.getAsk(order.getUserId(),order.getDoctorId());
             SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

@@ -32,7 +32,7 @@ public class WebSocketService {
      * 简单点对点聊天室
      */
     public void sendChatMessage(InMessage message) {
-        /*
+
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date= sdf.format(new Date());
         message.setCreateTime(date);
@@ -42,7 +42,7 @@ public class WebSocketService {
             messageService.addMessage(message);
         }
         message.setId(id);
-        log.info("from:"+message.getFromId()+"to:"+message.getToId()+"message:"+message.getContent());*/
+        log.info("from:"+message.getFromId()+"to:"+message.getToId()+"message:"+message.getContent());
         template.convertAndSend("/chat/single/"+message.getToId(),
                 new OutMessage(0,String.valueOf(message.getFromId()), message.getContent(),message.getAvatar(),message.getCreateTime(),message.getOrderId(),message.getContentType()));
     }

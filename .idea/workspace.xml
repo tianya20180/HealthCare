@@ -1,48 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0bdbfb6b-64dd-4932-a60c-8655086974c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/wx/config/CustomRealm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/wx/config/ShiroConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/AliPayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/AliPayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/CommitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/CommitController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/PrescriptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/PrescriptionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/poj/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/Commit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/poj/Commit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/poj/Doctor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/Drug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/poj/Drug.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/DoctorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/DoctorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/DrugService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/DrugService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/PrescriptionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/PrescriptionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/AliPayController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/AliPayController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/ArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/ArticleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/CommitController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/CommitController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/OrderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/PrescriptionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/PrescriptionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/poj/Article.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/poj/Article.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/poj/Commit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/poj/Commit.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/poj/Doctor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/poj/Doctor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/poj/Drug.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/poj/Drug.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/ArticleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/ArticleService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/DoctorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/DoctorService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/DrugService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/DrugService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/OrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/OrderService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/PrescriptionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/PrescriptionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/healthy-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/healthy-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/healthy-1.0-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/healthy-1.0-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-    </list>
+    <list default="true" id="0bdbfb6b-64dd-4932-a60c-8655086974c0" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +141,7 @@
       <workItem from="1620607963377" duration="6427000" />
       <workItem from="1620628900470" duration="7211000" />
       <workItem from="1620818773784" duration="30560000" />
-      <workItem from="1621164068569" duration="84276000" />
+      <workItem from="1621164068569" duration="84666000" />
     </task>
     <servers />
   </component>

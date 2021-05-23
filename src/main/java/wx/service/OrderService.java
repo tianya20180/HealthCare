@@ -49,4 +49,11 @@ public class OrderService {
     }
 
 
+    public List<Order> getByUserId(Integer userId){
+        QueryWrapper<Order> wrapper=new QueryWrapper();
+        wrapper.eq("user_id",userId);
+        return orderMapper.selectList(wrapper);
+    }
+
+
 }

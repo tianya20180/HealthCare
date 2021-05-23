@@ -4,8 +4,10 @@ package wx.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import wx.mapper.UnionMapper;
 import wx.poj.Drug;
 import wx.poj.Prescription;
+import wx.poj.Union;
 import wx.service.DrugService;
 import wx.service.PrescriptionService;
 import wx.util.Result;
@@ -28,12 +30,16 @@ public class PrescriptionController {
        @Resource
        private PrescriptionService prescriptionService;
 
+       @Resource
+       private UnionMapper unionMapper;
 
         @PostMapping("/addDrug")
-        public Result addDrug(@RequestBody Drug drug){
+        public Result addDrug(@RequestBody Drug drug,Integer pid){
             if(drug==null)
                 return new Result(null,"Drug为空",1);
-            drugService.addDrug(drug);
+            int id=drugService.addDrug(drug);
+            Union union=new Union(id,pid);
+            unionMapper.insert(union);
             return new Result(null,"新增成功",0);
         }
 
@@ -44,7 +50,7 @@ public class PrescriptionController {
         if(name==null)
             return new Result(null,"Drug为空",1);
         List<Drug>drugList=drugService.search(name);
-        return new Result(drugList,"新增成功",0);
+        return new Result(drugList,"查找成功",0);
     }
 
 
@@ -60,21 +66,36 @@ public class PrescriptionController {
             prescription.setCreateTime(date);
             prescription.setOrderId(orderId);
             log.info(prescription.toString());
-            prescriptionService.addPrescription(prescription);
-            return new Result(null,"新增成功",0);
+            int id =prescriptionService.addPrescription(prescription);
+            return new Result(id,"新增成功",0);
         }
 
         @GetMapping("/getPrescription")
         public Result getPrescription(String orderId){
-            Prescription prescription=prescriptionService.getPrescriptionByUserIdAndDoctorId(orderId);
-            List<Drug>drugList=drugService.getByPreId(orderId);
+            Prescription prescription=prescriptionService.getPrescriptionByOrderId(orderId);
+            List<Drug>drugList=drugService.getByPreId(prescription.getId());
             log.info(String.valueOf(drugList.size()));
             if(prescription==null||drugList==null||drugList.size()==0){
                 return new Result(prescription,"获取失败",1);
             }
-
             prescription.setDrugList(drugList);
             return new Result(prescription,"获取成功",0);
         }
+
+    @GetMapping("/getPrescriptionByUserId")
+    public Result getPrescriptionByUserId(String userId){
+        List<Prescription> prescriptionList=prescriptionService.getPrescriptionByUserId(userId);
+        for(Prescription prescription:prescriptionList){
+            List<Drug>drugList=drugService.getByPreId(prescription.getId());
+            log.info(String.valueOf(drugList.size()));
+            if(prescription==null||drugList==null||drugList.size()==0){
+                return new Result(prescription,"获取失败",1);
+            }
+            prescription.setDrugList(drugList);
+        }
+
+        return new Result(prescriptionList,"获取成功",0);
+    }
+
 
 }

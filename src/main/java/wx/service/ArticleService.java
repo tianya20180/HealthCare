@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.stereotype.Service;
 import wx.mapper.ArticleMapper;
 import wx.poj.Article;
+import wx.poj.Doctor;
+
 import java.util.List;
 import javax.annotation.Resource;
 
@@ -33,6 +35,7 @@ public class ArticleService {
     public List<Article> getByCategory(Integer type){
         QueryWrapper<Article>queryWrapper=new QueryWrapper<>();
         queryWrapper.eq("article_type",type);
+        queryWrapper.orderByDesc("create_time");
         return articleMapper.selectList(queryWrapper);
     }
 
@@ -41,5 +44,23 @@ public class ArticleService {
         queryWrapper.orderByDesc("view_count");
         return articleMapper.selectList(queryWrapper);
     }
+
+    public List<Article>searchArticle(String title){
+        QueryWrapper<Article>queryWrapper=new QueryWrapper<>();
+        queryWrapper.like("title",title);
+        return articleMapper.selectList(queryWrapper);
+    }
+
+    public List<Article>getAllArticle(){
+        QueryWrapper<Article>queryWrapper=new QueryWrapper<>();
+        return articleMapper.selectList(queryWrapper);
+    }
+
+    public void deleteArticleById(Integer id){
+        articleMapper.deleteById(id);
+    }
+
+
+
 
 }

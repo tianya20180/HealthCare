@@ -7,6 +7,7 @@ import wx.poj.Article;
 import wx.poj.ArticleLike;
 import wx.service.ArticleLikeService;
 import wx.service.ArticleService;
+import wx.service.DoctorService;
 import wx.util.RedisUtil;
 import wx.util.Result;
 import wx.util.SensitiveFilterUtil;
@@ -28,6 +29,8 @@ public class ArticleController
     private RedisUtil redisUtil;
     @Autowired
     private ArticleLikeService articleLikeService;
+    @Autowired
+    private DoctorService doctorService;
 
     @PostMapping("/addarticle")
     public Object addarticle(@Valid Article vo)
@@ -65,6 +68,8 @@ public class ArticleController
         log.info(articleId.toString());
         Article article=articleService.getArticleById(articleId);
        // log.info(article.toString());
+        String name=doctorService.getDoctorById(Integer.valueOf(article.getCreateuserid())).getUserName();
+        article.setAuthorName(name);
         return new Result(article,"获取成功",0);
     }
 
@@ -75,7 +80,7 @@ public class ArticleController
     }
     @GetMapping("/getByCategory")
     public Result getByCategory(Integer category){
-        List<Article> articleList=articleService.getByDoctorId(category);
+        List<Article> articleList=articleService.getByCategory(category);
         return new Result(articleList,"获取成功",0);
     }
 
@@ -84,10 +89,16 @@ public class ArticleController
         List<Article> articleList=articleService.getHotArticle();
         return new Result(articleList,"获取成功",0);
     }
+    @GetMapping("/searchArticle")
+    public Result searchArticle(String title){
+        List<Article>articleList=articleService.searchArticle(title);
+        return new Result(articleList,"获取成功",0);
+    }
 
     @GetMapping("/view")
-    public Result viewArticle(String host,Integer articleId){
-        String key = "view-"+host+articleId;
+    public Result viewArticle(Integer articleId){
+        String key = "view-"+articleId;
+        log.info(key);
         boolean hasKey = redisUtil.hasKey(key);
         int count;
         if(hasKey){
@@ -95,8 +106,8 @@ public class ArticleController
             redisUtil.set(key,count+1);
         }else{
             Article article=articleService.getArticleById(articleId);
-            int likeCount=article.getLikeCount()+1;
-            redisUtil.set(key,likeCount);
+            int viewCount=article.getViewCount()+1;
+            redisUtil.set(key,viewCount);
         }
         count= (int) redisUtil.get(key);
         return new Result(count,"浏览成功",0);

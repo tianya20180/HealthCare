@@ -8,6 +8,7 @@ import wx.poj.Doctor;
 import wx.poj.User;
 
 import java.util.*;
+import java.util.function.Consumer;
 import javax.annotation.Resource;
 
 @Service
@@ -34,7 +35,7 @@ public class DoctorService {
 
     public List<Doctor>getDoctorList(String userName){
         QueryWrapper<Doctor>wrapper=new QueryWrapper();
-        wrapper.like("user_name",userName);
+        wrapper.like("user_name",userName).or().like("specialty",userName).or().like("des",userName);
         return doctorMapper.selectList(wrapper);
     }
 
@@ -75,6 +76,11 @@ public class DoctorService {
     public void updateCount(Integer id,int count){
         UpdateWrapper<Doctor> wrapper=new UpdateWrapper();
         wrapper.eq("id",id).set("count",count);
+        doctorMapper.update(null,wrapper);
+    }
+    public void updateScore(Integer id,Float score){
+        UpdateWrapper<Doctor> wrapper=new UpdateWrapper();
+        wrapper.eq("id",id).set("score",score);
         doctorMapper.update(null,wrapper);
     }
     public void updateDoctor(Integer id,Doctor doctor){

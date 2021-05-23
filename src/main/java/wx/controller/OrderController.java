@@ -6,10 +6,11 @@ import org.springframework.web.bind.annotation.*;
 import wx.poj.Ask;
 import wx.poj.Order;
 import wx.service.AskService;
+import wx.service.DoctorService;
 import wx.service.OrderService;
 import wx.util.OrderUtil;
 import wx.util.Result;
-
+import java.util.*;
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,6 +25,8 @@ public class OrderController {
 
     @Resource
     private OrderService orderService;
+    @Resource
+    private DoctorService doctorService;
 
 
     @GetMapping("/addOrder")
@@ -54,6 +57,20 @@ public class OrderController {
         return new Result(null,"更新状态成功",0);
     }
 
+
+    @GetMapping("/user/get")
+    public Result getByUserId(Integer userId){
+        if(userId==null){
+            return new Result(null,"userId为空",1);
+        }
+        List<Order>orderList=orderService.getByUserId(userId);
+        for(Order order:orderList){
+            if(order.getDoctorId()!=null){
+                order.setDoctorName(doctorService.getDoctorById(order.getDoctorId()).getUserName());
+            }
+        }
+        return new Result(orderList,"更新状态成功",0);
+    }
 
 
 

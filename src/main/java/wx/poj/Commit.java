@@ -21,4 +21,5 @@ public class Commit {
     @TableField("user_name")
     private String userName;
     private String content;
+    private Float score;
 }

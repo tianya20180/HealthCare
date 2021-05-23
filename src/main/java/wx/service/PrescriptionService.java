@@ -14,8 +14,8 @@ public class PrescriptionService {
     @Resource
     private PrescriptionMapper prescriptionMapper;
 
-    public void addPrescription(Prescription prescription) {
-        prescriptionMapper.insert(prescription);
+    public int addPrescription(Prescription prescription) {
+       return prescriptionMapper.insert(prescription);
     }
 
     public List<Prescription> getPrescriptionByUserId(Integer userId) {
@@ -23,9 +23,16 @@ public class PrescriptionService {
         queryWrapper.eq("user_id", userId);
         return prescriptionMapper.selectList(queryWrapper);
     }
-    public Prescription getPrescriptionByUserIdAndDoctorId(String orderId) {
+    public Prescription getPrescriptionByOrderId(String orderId) {
         QueryWrapper<Prescription> queryWrapper = new QueryWrapper<Prescription>();
         queryWrapper.eq("order_id", orderId);
         return prescriptionMapper.selectOne(queryWrapper);
+    }
+
+
+    public List<Prescription> getPrescriptionByUserId(String userId) {
+        QueryWrapper<Prescription> queryWrapper = new QueryWrapper<Prescription>();
+        queryWrapper.eq("user_id", userId);
+        return prescriptionMapper.selectList(queryWrapper);
     }
 }

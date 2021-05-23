@@ -17,12 +17,18 @@ public class Drug {
     @TableField("drug_name")
     private String drugName;//药品名称
     @TableField("create_time")
-    private String createTime;
-    private Integer sum;//药品总量
-    private Integer times;//一天几次
-    private String way;//药品使用方法
+    private String createTime;//创建时间
+    private String way;//使用方法
     @TableField("prescription_id")
     private Integer prescriptionId;
-    @TableId("order_id")
-    private String orderId;
+    private String drugId;//批准文号
+    private String notice;//注意事项
+    private String type;//药品类型
+    private String storage;//存储方法
+    private String taboo;//禁忌
+    private String effect;//适应症
+    private String brand;//品牌
+    private String adverseReactions;//不良反应
+
+
 }

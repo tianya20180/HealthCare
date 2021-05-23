@@ -36,7 +36,10 @@ public class AdminController {
     private OrderService orderService;
     @Resource
     private AdminService adminService;
-
+    @Resource
+    private ArticleService articleService;
+    @Resource
+    private DrugService drugService;
 
     @GetMapping("/getAllAdmin")
     public Result getAllAdmin(){
@@ -212,4 +215,35 @@ public class AdminController {
         orderService.deleteOrder(id);
         return new Result(null,"成功获取",0);
     }
+
+
+    @GetMapping("/getAllArticle")
+    public Result getAllArtilce(){
+        List<Article>articleList =articleService.getAllArticle();
+        for(Article article:articleList){
+            article.setLink("http://192.144.236.155:8000/articleDeatil?id="+article.getId());
+        }
+        return new Result(articleList,"成功获取",0);
+    }
+
+    @GetMapping("/deleteArticleById")
+    public Result deleteArticleById(Integer id){
+        articleService.deleteArticleById(id);
+        return new Result(null,"成功删除",0);
+    }
+
+    @GetMapping("/getAllDrug")
+    public Result getAllDrug(){
+       List<Drug>drugList =drugService.getAllDrug();
+        return new Result(drugList,"成功获取",0);
+    }
+    @PostMapping("/addDrug")
+    public Result addDrug(@RequestBody Drug drug,Integer pid){
+        if(drug==null)
+            return new Result(null,"Drug为空",1);
+        int id=drugService.addDrug(drug);
+        return new Result(null,"新增成功",0);
+    }
+
+
 }

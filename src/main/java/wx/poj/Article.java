@@ -30,6 +30,9 @@ public class Article
     private Integer likeCount;
     @TableField("view_count")
     private Integer viewCount;
-
+    @TableField(exist = false)
+    private String authorName;
+    @TableField(exist = false)
+    private String link;
 }
 

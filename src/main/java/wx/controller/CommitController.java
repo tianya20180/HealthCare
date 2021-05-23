@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import wx.poj.Commit;
+import wx.poj.Doctor;
 import wx.service.CommitService;
+import wx.service.DoctorService;
 import wx.util.Result;
 
 import javax.annotation.Resource;
@@ -26,10 +28,11 @@ public class CommitController {
 
     @Resource
     private CommitService commitService;
-
+    @Resource
+    private DoctorService doctorService;
 
     @GetMapping("/add")
-    public Result addCommit(String userName,Integer doctorId,String content){
+    public Result addCommit(String userName,Integer doctorId,String content,Float score){
         if(userName==null||doctorId==null||content==null){
             return new Result(null,"内容为空",0);
         }
@@ -40,6 +43,15 @@ public class CommitController {
         commit.setDoctorId(doctorId);
         commit.setUserName(userName);
         commit.setCreateTime(date);
+        commit.setScore(score);
+        Doctor doctor=doctorService.getDoctorById(commit.getDoctorId());
+        List<Commit>commitList=commitService.getCommits(doctorId);
+        Float sum=Float.valueOf(0);
+        for(Commit myCommit:commitList){
+            sum+=myCommit.getScore();
+        }
+        Float res=sum/commitList.size();
+        doctorService.updateScore(doctor.getId(),res);
         commitService.addCommit(commit);
         return new Result(null,"新增成功",0);
     }
@@ -52,6 +64,8 @@ public class CommitController {
         List<Commit>commitList=commitService.getCommits(doctorId);
         return new Result(commitList,"获取评论成功",0);
     }
+
+
 
 
 

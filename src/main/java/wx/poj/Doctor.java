@@ -46,6 +46,8 @@ public class Doctor {
     private Integer category;
     @TableField(exist = false)
     private String categoryName;
+    @TableField("score")
+    private Float score;
 
 
 }

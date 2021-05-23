@@ -221,7 +221,7 @@ public class AdminController {
     public Result getAllArtilce(){
         List<Article>articleList =articleService.getAllArticle();
         for(Article article:articleList){
-            article.setLink("http://192.144.236.155:8000/articleDeatil?id="+article.getId());
+            article.setLink("http://192.144.236.155:8000/#/articleDeatil?id="+article.getId());
         }
         return new Result(articleList,"成功获取",0);
     }

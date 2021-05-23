@@ -47,6 +47,7 @@ wx\controller\OrderController.class
 wx\controller\LoginController.class
 wx\poj\MessageList.class
 wx\poj\InMessage.class
+wx\config\ScheduleConfig.class
 wx\service\AdminService.class
 inteceptor\SocketChannelIntecepter.class
 wx\service\MessageService.class

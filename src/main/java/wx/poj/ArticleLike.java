@@ -17,4 +17,10 @@ public class ArticleLike {
     private Integer userId;
     @TableField("article_id")
     private Integer articleId;
+
+    public ArticleLike(Integer userId, Integer articleId){
+        this.userId=userId;
+        this.articleId=articleId;
+    }
+
 }

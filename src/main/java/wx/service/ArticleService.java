@@ -1,6 +1,7 @@
 package wx.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import org.springframework.stereotype.Service;
 import wx.mapper.ArticleMapper;
 import wx.poj.Article;
@@ -55,6 +56,20 @@ public class ArticleService {
         QueryWrapper<Article>queryWrapper=new QueryWrapper<>();
         return articleMapper.selectList(queryWrapper);
     }
+
+    public void changeViewCount(int count,int id){
+        UpdateWrapper<Article>updateWrapper=new UpdateWrapper<>();
+        updateWrapper.eq("id",id).set("view_count",count);
+        articleMapper.update(null,updateWrapper);
+    }
+
+    public void changeLikeCount(int count,int id){
+        UpdateWrapper<Article>updateWrapper=new UpdateWrapper<>();
+        updateWrapper.eq("id",id).set("like_count",count);
+        articleMapper.update(null,updateWrapper);
+    }
+
+
 
     public void deleteArticleById(Integer id){
         articleMapper.deleteById(id);

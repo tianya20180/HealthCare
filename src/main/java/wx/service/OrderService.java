@@ -23,6 +23,11 @@ public class OrderService {
         wrapper.between("create_time",startTime,endTime);
         return orderMapper.selectList(wrapper);
     }
+    public List<Order> getAllOrder2(){
+        QueryWrapper<Order> wrapper=new QueryWrapper();
+
+        return orderMapper.selectList(wrapper);
+    }
       public List<Order> getAllOrders(){
         QueryWrapper<Order> wrapper=new QueryWrapper();
         return orderMapper.selectList(wrapper);

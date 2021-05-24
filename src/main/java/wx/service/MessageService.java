@@ -55,4 +55,14 @@ public class MessageService {
 
     }
 
+    public List<InMessage>getAllMessage(){
+        QueryWrapper<InMessage>queryWrapper=new QueryWrapper<>();
+        return messageMapper.selectList(queryWrapper);
+
+    }
+    public void deleteMessageById(Integer id){
+         messageMapper.deleteById(id);
+
+    }
+
 }

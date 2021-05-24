@@ -57,5 +57,12 @@ public class AskService {
         return askMapper.selectList(queryWrapper);
     }
 
+    public List<Ask>getAllAsk(){
+        QueryWrapper<Ask> queryWrapper=new QueryWrapper<>();
+        return askMapper.selectList(queryWrapper);
+    }
+
+
+
 
 }

@@ -20,5 +20,10 @@ public class ArticleLikeService {
         return articleLikeMapper.selectList(queryWrapper);
     }
 
+    public void insert(ArticleLike articleLike){
+        articleLikeMapper.insert(articleLike);
+    }
+
+
 
 }

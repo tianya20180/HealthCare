@@ -113,6 +113,40 @@ public class ArticleController
         return new Result(count,"浏览成功",0);
 
     }
+    @GetMapping("/getViewCount")
+    public Result getViewCount(Integer articleId){
+        String key = "view-"+articleId;
+        log.info(key);
+        boolean hasKey = redisUtil.hasKey(key);
+        int count;
+        if(hasKey){
+            count= (int) redisUtil.get(key);
+        }else{
+            Article article=articleService.getArticleById(articleId);
+            count=article.getViewCount();
+        }
+        return new Result(count,"获取成功",0);
+
+    }
+
+
+
+    @GetMapping("/getLikeCount")
+    public Result getLikeCount(Integer articleId,Integer userId){
+        String articleLikeKey ="like-"+articleId;
+        int count=0;
+        if(redisUtil.hasKey(articleLikeKey)){
+            count=redisUtil.sGet(articleLikeKey).size();
+        }else{
+            List<ArticleLike>articleLikeList=articleLikeService.getUserIdByArticleId(articleId);
+            count=articleLikeList.size();
+        }
+        return new Result(count,"点赞成功",0);
+
+    }
+
+
+
 
     @GetMapping("/like")
     public Result likeArticle(Integer articleId,Integer userId){

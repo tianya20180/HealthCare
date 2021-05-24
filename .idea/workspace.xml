@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0bdbfb6b-64dd-4932-a60c-8655086974c0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/AdminController.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -144,7 +146,7 @@
       <workItem from="1620628900470" duration="7211000" />
       <workItem from="1620818773784" duration="30560000" />
       <workItem from="1621164068569" duration="86495000" />
-      <workItem from="1621768431607" duration="7293000" />
+      <workItem from="1621768431607" duration="8946000" />
     </task>
     <servers />
   </component>

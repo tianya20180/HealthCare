@@ -121,6 +121,9 @@ public class AdminController {
             return new Result(null,"用户名或者密码或者身份为空",1);
         }
         Admin user=adminService.checkMapper(phone,password);
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time= sdf.format(new Date());
+        user.setCreateTime(time);
         if(user!=null){
                 session.setAttribute("admin",user);
                 session.setAttribute("identity",identity);
@@ -205,7 +208,8 @@ public class AdminController {
             Doctor doctor=doctorService.getDoctorById(order.getDoctorId());
             User user=userService.getUserById(order.getUserId());
             order.setUserName(user.getUserName());
-            order.setDoctorName(doctor.getUserName());
+            if(doctor!=null)
+                order.setDoctorName(doctor.getUserName());
         }
         return new Result(orderList,"成功获取",0);
     }

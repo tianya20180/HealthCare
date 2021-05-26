@@ -14,9 +14,12 @@ public class Diagnosis {
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
     private String suggestion;
-    private String Illness;
+    @TableField("diagnosis")
+    private String diagnosis;
     private Integer userId;
     private Integer doctorId;
     @TableField("create_time")
     private String createTime;
+    @TableField(exist = false)
+    private String doctorName;
 }

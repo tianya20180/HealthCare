@@ -2,23 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bdbfb6b-64dd-4932-a60c-8655086974c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/wx/controller/DiagnosisController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/AliPayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/AliPayController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/AliPayController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/AliPayController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/DiagnosisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/DiagnosisController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/Diagnosis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/poj/Diagnosis.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/ArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/ArticleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/OrderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/poj/ArticleLike.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/poj/ArticleLike.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/ArticleLikeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/ArticleLikeService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/ArticleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/ArticleService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/AskService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/AskService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/MessageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/MessageService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/OrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/OrderService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/TaskService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/TaskService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/CategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/CategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/DiagnosisController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/DiagnosisController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/poj/Diagnosis.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/poj/Diagnosis.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -161,7 +152,7 @@
       <workItem from="1620818773784" duration="30560000" />
       <workItem from="1621164068569" duration="86495000" />
       <workItem from="1621768431607" duration="22488000" />
-      <workItem from="1622013738951" duration="12256000" />
+      <workItem from="1622013738951" duration="17567000" />
     </task>
     <servers />
   </component>

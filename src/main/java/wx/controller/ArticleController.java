@@ -86,6 +86,7 @@ public class ArticleController
             List<ArticleLike>articleLikeList=articleLikeService.getUserIdByArticleId(articleId);
             count=articleLikeList.size();
         }
+        article.setLikeCount(count);
         return new Result(article,"获取成功",0);
     }
 
@@ -169,7 +170,9 @@ public class ArticleController
         String articleLikeKey ="like-"+articleId;
         int count=0;
         if(redisUtil.hasKey(articleLikeKey)){
+            log.info("hasKey");
             if(!redisUtil.sHasKey(articleLikeKey,userId)){
+                log.info("add set");
                 redisUtil.sSet(articleLikeKey,userId);
             }
             count=redisUtil.sGet(articleLikeKey).size();

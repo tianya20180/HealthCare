@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import wx.poj.Ask;
+import wx.poj.Doctor;
 import wx.poj.Order;
 import wx.service.AskService;
 import wx.service.DoctorService;
@@ -66,7 +67,12 @@ public class OrderController {
         List<Order>orderList=orderService.getByUserId(userId);
         for(Order order:orderList){
             if(order.getDoctorId()!=null){
-                order.setDoctorName(doctorService.getDoctorById(order.getDoctorId()).getUserName());
+                Doctor doctor=doctorService.getDoctorById(order.getId());
+                if(doctor!=null){
+                    order.setDoctorName(doctor.getUserName());
+                }
+            }else{
+                order.setDoctorName("不存在");
             }
         }
         return new Result(orderList,"更新状态成功",0);

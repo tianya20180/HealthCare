@@ -70,6 +70,22 @@ public class ArticleController
        // log.info(article.toString());
         String name=doctorService.getDoctorById(Integer.valueOf(article.getCreateuserid())).getUserName();
         article.setAuthorName(name);
+        String viewKey = "view-"+articleId;
+        boolean hasKey = redisUtil.hasKey(viewKey);
+        int count;
+        if(hasKey){
+            count= (int) redisUtil.get(viewKey);
+        }else{
+            count=article.getViewCount();
+            redisUtil.set(viewKey,count);
+        }
+        String articleLikeKey ="like-"+articleId;
+        if(redisUtil.hasKey(articleLikeKey)){
+            count=redisUtil.sGet(articleLikeKey).size();
+        }else{
+            List<ArticleLike>articleLikeList=articleLikeService.getUserIdByArticleId(articleId);
+            count=articleLikeList.size();
+        }
         return new Result(article,"获取成功",0);
     }
 

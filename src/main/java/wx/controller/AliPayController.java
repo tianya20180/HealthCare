@@ -149,6 +149,7 @@ public class AliPayController {
         boolean signVerified = AlipaySignature.rsaCheckV1(params, AlipayConfig.ALIPAY_PUBLIC_KEY, AlipayConfig.CHARSET, AlipayConfig.sign_type); //调用SDK验证签名
         Doctor doctor=null;
         String out_trade_no="";
+        String userId="";
         //——请在这里编写您的程序（以下代码仅作参考）——
         if (signVerified) {
             //商户订单号
@@ -162,13 +163,13 @@ public class AliPayController {
 
             // 修改叮当状态，改为 支付成功，已付款; 同时新增支付流水  这里放在 异步 业务 处理
 //            ordersService.updateOrderStatus(out_trade_no, trade_no, total_amount);
-
             //页面  展示
             Order order = ordersService.getOrderById(out_trade_no);
-             doctor = doctorService.getDoctorById(order.getDoctorId());
-             ordersService.changeStatus(1,out_trade_no);
-             doctorService.updateCount(doctor.getId(),doctor.getCount()+1);
-             doctorService.updateMoney(doctor.getId(),doctor.getMoney()+Double.valueOf(total_amount));
+            doctor = doctorService.getDoctorById(order.getDoctorId());
+             userId=String.valueOf(order.getUserId());
+            ordersService.changeStatus(1,out_trade_no);
+            doctorService.updateCount(doctor.getId(),doctor.getCount()+1);
+            doctorService.updateMoney(doctor.getId(),doctor.getMoney()+Double.valueOf(total_amount));
             Ask ask=askService.getAsk(order.getUserId(),order.getDoctorId());
             SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String date= sdf.format(new Date());
@@ -202,7 +203,7 @@ public class AliPayController {
         }
 
         //前后分离形式  直接返回页面 记得加上注解@Response  http://login.calidray.com你要返回的网址，再页面初始化时候让前端调用你其他接口，返回信息
-       String result = "<form action=\"http://192.144.236.155:8000/#/information/?to="+doctor.getId()+"&orderId="+out_trade_no+"\"  method=\"get\" name=\"form1\">\n" +
+       String result = "<form action=\"http://192.144.236.155:8000/#/information/?to="+doctor.getId()+"&orderId="+out_trade_no+"&userId="+userId+"\"  method=\"get\" name=\"form1\">\n" +
                "</form>\n" +
                "<script>document.forms[0].submit();</script>";
        return result;

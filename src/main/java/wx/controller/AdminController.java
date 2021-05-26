@@ -40,6 +40,8 @@ public class AdminController {
     private ArticleService articleService;
     @Resource
     private DrugService drugService;
+    @Resource
+    private CategoryService categoryService;
 
     @GetMapping("/getAllAdmin")
     public Result getAllAdmin(){
@@ -248,6 +250,10 @@ public class AdminController {
         int id=drugService.addDrug(drug);
         return new Result(null,"新增成功",0);
     }
-
+    @GetMapping("/getAllCategory")
+    public Result getAllCategory(){
+        List<Category>categoryList =categoryService.getAll();
+        return new Result(categoryList,"成功获取",0);
+    }
 
 }

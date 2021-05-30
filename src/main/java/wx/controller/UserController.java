@@ -55,7 +55,7 @@ public class UserController {
     @PostMapping("/upload")
     public Result uploadAvatar(@RequestParam(value = "file")MultipartFile file, @RequestParam Integer id, HttpServletRequest request) throws IOException {
       //  String dirPath=request.getServletContext().getRealPath("upload");
-        String dirPath="C:\\Users\\wangxi\\Desktop\\谷芽平台\\HealthyCare-Web\\static\\image\\avatar";
+        String dirPath="/home/lighthouse/wangxi/web/HealthyCare-Web/static/image/avatar";
         log.info("dir:"+dirPath);
         File dir=new File(dirPath);
         if(!dir.exists()){

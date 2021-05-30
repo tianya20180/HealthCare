@@ -2,6 +2,7 @@ package wx.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.stereotype.Service;
 import wx.mapper.OrderMapper;
 import wx.poj.Order;
@@ -18,13 +19,14 @@ public class OrderService {
         orderMapper.insert(order);
     }
 
-    public List<Order> getAllOrder(String startTime,String endTime){
+    public Page getAllOrder(String startTime, String endTime, Page page){
         QueryWrapper<Order> wrapper=new QueryWrapper();
         wrapper.between("create_time",startTime,endTime);
-        return orderMapper.selectList(wrapper);
+        return orderMapper.selectPage(page,wrapper);
     }
-    public List<Order> getAllOrder2(){
+    public List<Order> getAllOrder2(String startTime, String endTime){
         QueryWrapper<Order> wrapper=new QueryWrapper();
+        wrapper.between("create_time",startTime,endTime);
 
         return orderMapper.selectList(wrapper);
     }

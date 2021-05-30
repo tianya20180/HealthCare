@@ -16,6 +16,8 @@ import wx.util.JsonUtil;
 import wx.config.MessageConfig;
 import wx.util.PhoneCodeUtil;
 import wx.util.Result;
+
+import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -119,7 +121,7 @@ public class LoginController {
         if(ms.getCode()==0){
             return new Result(map,"发送成功",0);
         }
-        return new Result(null,"发送失败",1);
+        return new Result(map,"发送成功",0);
     }
 
 
@@ -148,6 +150,8 @@ public class LoginController {
         }
         log.info("code:"+code);
         log.info("sendCode:"+sendCode);
+        //验证验证码是否正确
+
         if(!code.equals(sendCode)){
             return new Result(null,"登录失败 验证码错误",1);
         }
@@ -168,19 +172,58 @@ public class LoginController {
     }
 
 
+    @GetMapping("/registerByCode")
+    public Result registerByCode(String phone,String sendCode,String password,String userName,HttpSession session) throws Exception {
+        //检查该号码是否已注册
+        if(phone==null||sendCode==null||password==null){
+            return new Result(null,"手机号或者验证码为null",1);
+        }
+        log.info("code:"+code);
+        log.info("sendCode:"+sendCode);
+        //验证验证码是否正确
+        /*
+        if(!code.equals(sendCode)){
+            return new Result(null,"登录失败 验证码错误",1);
+        }*/
+        User user=new User();
+        user.setUserName(userName);
+        user.setPhone(phone);
+        user.setIdentity(0);
+        user.setMoney(0F);
+        user.setPassword(DigestUtils.md5DigestAsHex(password.getBytes()));
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date= sdf.format(new Date());
+        user.setCreateTime(date);
+        userService.addUser(user);
+        session.setAttribute("user",user);
+        return new Result(user,"登录成功",0);
+    }
+
+
     @PostMapping("/register")
     public Result register(@RequestBody Doctor doctor){
         if(doctor==null){
             return new Result(null,"doctor为null",1);
         }
+        String sendCode=doctor.getSendCode();
         log.info("username:"+doctor.getUserName()+"password:"+doctor.getPassword()+"address:"+doctor.getPassword()+"cardId"+doctor.getCardId());
         String phone=doctor.getPhone();
+        //验证验证码是否正确
+        /*
+        if(!code.equals(sendCode)){
+            return new Result(null,"登录失败 验证码错误",1);
+        }*/
         Doctor exists=doctorService.getByPhone(phone);
         if(exists!=null){
             log.info("手机3号："+doctor.getPhone()+"已注册");
             return new Result(null,"已注册",0);
         }
+        doctor.setMoney(0);
+        doctor.setCategory(0);
         doctor.setPassword(DigestUtils.md5DigestAsHex(doctor.getPassword().getBytes()));
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date= sdf.format(new Date());
+        doctor.setCreateTime(date);
         doctorService.addDoctor(doctor);
         return new Result(null,"登录成功",0);
     }

@@ -36,7 +36,7 @@ public class PayController {
 
         @GetMapping("/pay")
         public Result pay(String orderId){
-            /*
+
             if(orderId==null||orderId.equals("")){
                 return new Result(null,"orderId为空",1);
             }
@@ -52,7 +52,7 @@ public class PayController {
             if(doctor==null){
                 return new Result(null,"找不到医生",1);
             }
-            Integer userMoney=user.getMoney();
+            Float userMoney=user.getMoney();
             Integer needMoney=order.getMoney();
             log.info("userMoney:"+userMoney);
             log.info("needMoney:"+needMoney);
@@ -61,8 +61,9 @@ public class PayController {
             }
             user.setMoney(userMoney-needMoney);
             doctor.setMoney(doctor.getMoney()+needMoney);
-            Ask ask=askService.getAsk(order.getId(),order.getId());
+            Ask ask=askService.getAsk(order.getUserId(),order.getDoctorId());
             order.setOrderId(orderId);
+     //       log.info("userMoney:"+ask.toString());
             SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String date= sdf.format(new Date());
             if(ask==null){
@@ -73,6 +74,7 @@ public class PayController {
                 newAsk.setCreateTime(date);
                 newAsk.setOrderId(orderId);
                 askService.addAsk(newAsk);
+                log.info("userMoney:"+newAsk.toString());
             }else{
                 askService.changeOrder(order.getUserId(),order.getDoctorId(),orderId);
                 askService.changeStatus(order.getUserId(),order.getDoctorId(),1);
@@ -80,7 +82,7 @@ public class PayController {
             userService.updateMoney(user.getId(),user.getMoney());
             doctorService.updateMoney(doctor.getId(),doctor.getMoney());
             orderService.changeStatus(1,orderId);
-*/
+
             return new Result(null,"付款成功",0);
 
         }

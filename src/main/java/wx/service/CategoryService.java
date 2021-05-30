@@ -1,6 +1,7 @@
 package wx.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.stereotype.Service;
 import wx.mapper.CategoryMapper;
 import wx.poj.Category;
@@ -23,9 +24,8 @@ public class CategoryService {
         categoryQueryWrapper.eq("type",1);
         return  categoryMapper.selectList(categoryQueryWrapper);
     }
-    public List<Category>getAll(){
-        QueryWrapper<Category>categoryQueryWrapper=new QueryWrapper<>();
-        return  categoryMapper.selectList(categoryQueryWrapper);
+    public Page getAll(Page page){
+        return  categoryMapper.selectPage(page,null);
     }
 
     public void delete(Integer id){

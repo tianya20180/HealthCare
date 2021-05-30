@@ -48,6 +48,10 @@ public class Doctor {
     private String categoryName;
     @TableField("score")
     private Float score;
+    @TableField(exist = false)
+    private String sendCode;
+    @TableField(exist = false)
+    private String  setPayeeAccount;
 
 
 }

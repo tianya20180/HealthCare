@@ -76,7 +76,7 @@ public class AliPayController {
         //付款金额，必填
         String total_amount = order.getMoney().toString();
         //订单名称，必填
-        String subject = doctor.getUserName();
+        String subject = "谷芽在线问诊平台";
         //商品描述，可空
         String body = "用户订购商品个数：" + 1;
 
@@ -203,7 +203,7 @@ public class AliPayController {
         }
 
         //前后分离形式  直接返回页面 记得加上注解@Response  http://login.calidray.com你要返回的网址，再页面初始化时候让前端调用你其他接口，返回信息
-       String result = "<form action=\"http://192.144.236.155:8000/#/information/?to="+doctor.getId()+"&orderId="+out_trade_no+"&userId="+userId+"\"  method=\"get\" name=\"form1\">\n" +
+       String result = "<form action=\"http://localhost:8000/#/information/?to="+doctor.getId()+"&orderId="+out_trade_no+"&userId="+userId+"\"  method=\"get\" name=\"form1\">\n" +
                "</form>\n" +
                "<script>document.forms[0].submit();</script>";
        return result;

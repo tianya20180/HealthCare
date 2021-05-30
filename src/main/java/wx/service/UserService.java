@@ -2,6 +2,7 @@ package wx.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import wx.mapper.UserMapper;
@@ -57,7 +58,7 @@ public class UserService {
         userMapper.updateById(user);
     }
 
-    public void updateMoney(Integer id,Integer money){
+    public void updateMoney(Integer id,Float money){
         UpdateWrapper<User> wrapper=new UpdateWrapper();
         wrapper.eq("id",id).set("money",money);
         userMapper.update(null,wrapper);
@@ -65,9 +66,8 @@ public class UserService {
 
 
 
-    public List<User>getAllUser(){
-        QueryWrapper<User> wrapper=new QueryWrapper();
-        return userMapper.selectList(wrapper);
+    public Page getAllUser(Page page){
+        return userMapper.selectPage(page,null);
     }
 
     public void changeUserStatus(Integer id,Integer status){

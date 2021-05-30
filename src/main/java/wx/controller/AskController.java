@@ -6,9 +6,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import wx.poj.Ask;
-import wx.poj.Doctor;
-import wx.poj.User;
+import wx.poj.*;
 import wx.service.AskService;
 import wx.service.DoctorService;
 import wx.service.MessageService;
@@ -48,7 +46,8 @@ public class AskController {
 
     @GetMapping("/change/status")
     public Result changeStatus(Integer userId,Integer doctorId){
-        askService.changeStatus(userId,doctorId,0);
+        askService.deleteByMap(userId,doctorId);
+       // messageService.deleteMessageByMap(userId,doctorId);
         return new Result(null,"获取成功",0);
     }
 
@@ -65,7 +64,9 @@ public class AskController {
         for(Ask ask:askList){
             Doctor doctor=doctorService.getDoctorById(ask.getDoctorId());
             ask.setDoctorAvatar(doctor.getAvatar());
-            ask.setUserUnread(messageService.getOfflineMessageByUserId(userId).size());
+            List<InMessage>messageList=messageService.getOfflineMessageByUserId(ask.getDoctorId(),userId);
+            if(messageList!=null)
+                ask.setUserUnread(messageList.size());
             ask.setDoctorName(doctor.getUserName());
         }
 
@@ -79,7 +80,7 @@ public class AskController {
         for(Ask ask:askList){
             User user=userService.getUserById(ask.getUserId());
             ask.setUserAvatar(user.getAvatar());
-            ask.setDoctorUnread(messageService.getOffLineMessageByDoctorId(doctorId).size());
+            ask.setDoctorUnread(messageService.getOffLineMessageByDoctorId(doctorId,ask.getUserId()).size());
             ask.setUserName(user.getUserName());
         }
 

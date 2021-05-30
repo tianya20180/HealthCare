@@ -33,29 +33,7 @@ public class MessageController {
     private DoctorService doctorService;
 
 
-    @GetMapping("/user/get")
-    public Result userGet(Integer userId){
-        log.info(String.valueOf(userId));
-        List<MessageList>messageLists=messageListService.getByUserId(userId);
-        for(MessageList messageList:messageLists){
-            Doctor doctor=doctorService.getDoctorById(messageList.getDoctorId());
-            messageList.setUserName(doctor.getUserName());
-            messageList.setUnreadCount(messageService.getOfflineMessageByUserId(userId).size());
-        }
-        return new Result(messageLists,"获取成功",0);
-    }
 
-    @GetMapping("/doctor/get")
-    public Result doctorGet(Integer doctorId){
-        log.info(String.valueOf(doctorId));
-        List<MessageList>messageLists=messageListService.getByDoctorId(doctorId);
-        for(MessageList messageList:messageLists){
-            User user=userService.getUserById(messageList.getUserId());
-            messageList.setUserName(user.getUserName());
-            messageList.setUnreadCount(messageService.getOfflineMessageByUserId(doctorId).size());
-        }
-        return new Result(messageLists,"获取成功",0);
-    }
 
 
 /*
@@ -67,8 +45,8 @@ public class MessageController {
 */
 
     @GetMapping("/user/get_offline")
-    public Result getOfflineMessageByUser(Integer userId){
-        List<InMessage>messageLists=messageService.getOfflineMessageByUserId(userId);
+    public Result getOfflineMessageByUser(Integer doctorId,Integer userId){
+        List<InMessage>messageLists=messageService.getOfflineMessageByUserId(doctorId,userId);
         for(InMessage message:messageLists){
             log.info(message.getId().toString());
             messageService.changeRead(message.getId());
@@ -77,8 +55,8 @@ public class MessageController {
     }
 
     @GetMapping("/doctor/get_offline")
-    public Result getOfflineMessage(Integer doctorId){
-        List<InMessage>messageLists=messageService.getOffLineMessageByDoctorId(doctorId);
+    public Result getOfflineMessage(Integer doctorId,Integer userId){
+        List<InMessage>messageLists=messageService.getOffLineMessageByDoctorId(doctorId,userId);
         for(InMessage message:messageLists){
             messageService.changeRead(message.getId());
         }
@@ -107,10 +85,10 @@ public class MessageController {
     }
 
     @GetMapping("/change_status")
-    public Result changeMessageStatus(Integer id){
-        if(id==null)
+    public Result changeMessageStatus(Integer msgId){
+        if(msgId==null)
             return new Result(null,"id为空",0);
-        messageService.changeRead(id);
+        messageService.changeRead(msgId);
         return new Result(null,"修改状态成功",1);
     }
 

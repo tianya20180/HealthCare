@@ -1,6 +1,7 @@
 package wx.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
@@ -44,9 +45,10 @@ public class AdminController {
     private CategoryService categoryService;
 
     @GetMapping("/getAllAdmin")
-    public Result getAllAdmin(){
-        List<Admin>adminList=adminService.getAllAdmin();
-        return new Result(adminList,"成功获取",0);
+    public Result getAllAdmin(int current,int size){
+        Page<Admin> page=new Page<>(current,size);
+        adminService.getAllAdmin(page);
+        return new Result(page,"成功获取",0);
     }
 
     @GetMapping("/delete")
@@ -56,9 +58,10 @@ public class AdminController {
     }
 
     @GetMapping("/getAllUser")
-    public Result getAllUser(){
-        List<User>userList=userService.getAllUser();
-        return new Result(userList,"成功获取",0);
+    public Result getAllUser(int current,int size){
+        Page<User> page=new Page<>(current,size);
+        userService.getAllUser(page);
+        return new Result(page,"成功获取",0);
     }
 
     @GetMapping("/getData")
@@ -79,7 +82,7 @@ public class AdminController {
         int addUser=userService.getUserCountBetweenTime(start,end);
         int addDoctor=doctorService.getDoctorCountBetweenTime(start,end);
         int addAdmin=adminService.getAdminCountBetweenTime(start,end);
-        int addOrder=orderService.getAllOrder(start,end).size();
+        int addOrder=orderService.getAllOrder2(start,end).size();
         Map<String,Object>map=new HashMap<String,Object>();
         map.put("userCount",userCount);
         map.put("doctorCount",doctorCount);
@@ -141,6 +144,7 @@ public class AdminController {
           if(doctorId==null||authenticationId==null){
               return new Result(null,"doctorId为null或者authenticationId为null",1);
           }
+
           Doctor doctor=doctorService.getDoctorById(doctorId);
           doctor.setStatus(1);
           doctorService.updateDoctor(doctorId,doctor);
@@ -160,15 +164,18 @@ public class AdminController {
     }
 
     @GetMapping("/getAllAuthentiation")
-    public Result getAllAuthentication(){
-        List<Authentication>authenticationList=authenticationService.getAllAuthentication();
+    public Result getAllAuthentication(int current,int size){
+        Page<Authentication> page=new Page<>(current,size);
+        authenticationService.getAllAuthentication(page);
+        List<Authentication>authenticationList=page.getRecords();
         for(Authentication authentication:authenticationList){
             int doctorId=authentication.getDoctorId();
             Doctor doctor=doctorService.getDoctorById(doctorId);
             authentication.setDoctorName(doctor.getUserName());
             authentication.setCategoryName(CategoryUtil.convertCategory(authentication.getCategory()));
         }
-        return new Result(authenticationList,"成功获取",0);
+        page.setRecords(authenticationList);
+        return new Result(page,"成功获取",0);
     }
 
 
@@ -195,17 +202,22 @@ public class AdminController {
     }
 
     @GetMapping("/getAllDoctor")
-    public Result getAllDoctor(){
-        List<Doctor>doctorList=doctorService.getAllDoctor();
+    public Result getAllDoctor(int current,int size){
+        Page<Doctor> page=new Page<>(current,size);
+        doctorService.getAllDoctor(page);
+        List<Doctor>doctorList=page.getRecords();
         for(Doctor doctor:doctorList){
             doctor.setCategoryName(CategoryUtil.convertCategory(doctor.getCategory()));
         }
-        return new Result(doctorList,"成功获取",0);
+        page.setRecords(doctorList);
+        return new Result(page,"成功获取",0);
     }
 
     @GetMapping("/getAllOrder")
-    public Result getAllOrder(String start, String end){
-        List<Order>orderList=orderService.getAllOrder(start,end);
+    public Result getAllOrder(String start, String end,int current,int size){
+        Page<Order>page=new Page<>(current,size);
+        orderService.getAllOrder(start,end,page);
+        List<Order>orderList=page.getRecords();
         for(Order order:orderList){
             Doctor doctor=doctorService.getDoctorById(order.getDoctorId());
             User user=userService.getUserById(order.getUserId());
@@ -213,7 +225,8 @@ public class AdminController {
             if(doctor!=null)
                 order.setDoctorName(doctor.getUserName());
         }
-        return new Result(orderList,"成功获取",0);
+        page.setRecords(orderList);
+        return new Result(page,"成功获取",0);
     }
 
     @GetMapping("/deleteOrder")
@@ -224,11 +237,14 @@ public class AdminController {
 
 
     @GetMapping("/getAllArticle")
-    public Result getAllArtilce(){
-        List<Article>articleList =articleService.getAllArticle();
+    public Result getAllArtilce(int current,int size){
+        Page<Article> page=new Page<>(current,size);
+        articleService.getAllArticle(page);
+        List<Article>articleList=page.getRecords();
         for(Article article:articleList){
             article.setLink("http://192.144.236.155:8000/#/articleDeatil?id="+article.getId());
         }
+        page.setRecords(articleList);
         return new Result(articleList,"成功获取",0);
     }
 
@@ -251,9 +267,10 @@ public class AdminController {
         return new Result(null,"新增成功",0);
     }
     @GetMapping("/getAllCategory")
-    public Result getAllCategory(){
-        List<Category>categoryList =categoryService.getAll();
-        return new Result(categoryList,"成功获取",0);
+    public Result getAllCategory(int current,int size){
+        Page<Category> page=new Page<>(current,size);
+        categoryService.getAll(page);
+        return new Result(page,"成功获取",0);
     }
 
 }

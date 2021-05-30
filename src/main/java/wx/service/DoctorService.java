@@ -2,6 +2,7 @@ package wx.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.stereotype.Service;
 import wx.mapper.DoctorMapper;
 import wx.poj.Doctor;
@@ -58,6 +59,7 @@ public class DoctorService {
         wrapper.eq("phone",phone).set("password",password);
     }
 
+
     public Doctor getDoctorById(Integer id){
         QueryWrapper<Doctor> wrapper=new QueryWrapper();
         wrapper.eq("id",id);
@@ -88,9 +90,8 @@ public class DoctorService {
         wrapper.eq("id",id);
         doctorMapper.updateById(doctor);
     }
-    public List<Doctor>getAllDoctor(){
-        QueryWrapper<Doctor> wrapper=new QueryWrapper();
-        return doctorMapper.selectList(wrapper);
+    public Page getAllDoctor(Page page){
+        return doctorMapper.selectPage(page,null);
     }
     public void changeDoctorStatus(Integer id,Integer status){
         UpdateWrapper<Doctor> wrapper=new UpdateWrapper();

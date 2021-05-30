@@ -2,6 +2,7 @@ package wx.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.stereotype.Service;
 import wx.mapper.ArticleMapper;
 import wx.poj.Article;
@@ -52,9 +53,8 @@ public class ArticleService {
         return articleMapper.selectList(queryWrapper);
     }
 
-    public List<Article>getAllArticle(){
-        QueryWrapper<Article>queryWrapper=new QueryWrapper<>();
-        return articleMapper.selectList(queryWrapper);
+    public Page getAllArticle(Page page){
+        return articleMapper.selectPage(page,null);
     }
 
     public void changeViewCount(int count,int id){

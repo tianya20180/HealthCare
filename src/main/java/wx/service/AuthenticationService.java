@@ -2,6 +2,7 @@ package wx.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.stereotype.Service;
 import wx.mapper.AuthenticationMapper;
 import wx.poj.Authentication;
@@ -27,9 +28,8 @@ public class AuthenticationService {
     }
 
 
-    public List<Authentication> getAllAuthentication(){
-        QueryWrapper<Authentication>wrapper=new QueryWrapper<Authentication>();
-        return  authenticationMapper.selectList(wrapper);
+    public Page getAllAuthentication(Page page){
+        return  authenticationMapper.selectPage(page,null);
     }
 
 }

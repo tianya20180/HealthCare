@@ -39,12 +39,12 @@ public class WebSocketService {
         message.setIsRead(0);
         Integer id=0;
         if(message.getContentType()==0){
-            messageService.addMessage(message);
+            id =messageService.addMessage(message);
         }
-        message.setId(id);
+
         log.info("from:"+message.getFromId()+"to:"+message.getToId()+"message:"+message.getContent());
         template.convertAndSend("/chat/single/"+message.getToId(),
-                new OutMessage(0,String.valueOf(message.getFromId()), message.getContent(),message.getAvatar(),message.getCreateTime(),message.getOrderId(),message.getContentType()));
+                new OutMessage(id,String.valueOf(message.getFromId()), message.getContent(),message.getAvatar(),message.getCreateTime(),message.getOrderId(),message.getContentType()));
     }
 
 

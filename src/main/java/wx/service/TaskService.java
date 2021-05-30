@@ -82,21 +82,7 @@ public class TaskService {
 
     }
 
-    @Scheduled(cron = "0 0 12 * * ?")
-    public void checkOrderTask() throws ParseException {
-        log.info("------------------无效订单删除定时任务开始----------------");
-        List<Order>orderList=orderService.getAllOrder2();
-        for(Order order:orderList){
-            String now=sdf.format(new Date());
-            int dayDifferences= TimeUtil.calculateDayDifference(order.getCreateTime(),now);
-            if(dayDifferences>7&&order.getStatus()==0){
-               log.info("删除的订单id:");
-               orderService.deleteOrder(order.getId());
-            }
-        }
-        log.info("------------------无效订单删除定时任务----------------");
 
-    }
 
     @Scheduled(cron = "0 0 12 * * ?")
     public void MessageTask() throws ParseException {

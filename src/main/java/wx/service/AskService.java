@@ -2,13 +2,14 @@ package wx.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import wx.mapper.AskMapper;
 import wx.poj.Ask;
 import java.util.*;
 import javax.annotation.Resource;
-
+@Slf4j
 @Service
 public class AskService {
 
@@ -62,6 +63,15 @@ public class AskService {
         return askMapper.selectList(queryWrapper);
     }
 
+
+    public void deleteByMap(Integer userId,Integer doctorId){
+        Map<String,Object> map=new HashMap<>();
+        map.put("user_id",userId);
+        map.put("doctor_id",doctorId);
+        int row=askMapper.deleteByMap(map);
+
+
+    }
 
 
 

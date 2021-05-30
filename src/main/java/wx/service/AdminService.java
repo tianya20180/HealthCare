@@ -1,6 +1,7 @@
 package wx.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.stereotype.Service;
 import wx.mapper.AdminMapper;
 import wx.mapper.UserMapper;
@@ -17,9 +18,8 @@ public class AdminService {
     private AdminMapper adminMapper;
 
 
-    public List<Admin>getAllAdmin(){
-        QueryWrapper<Admin> wrapper=new QueryWrapper();
-        return adminMapper.selectList(wrapper);
+    public Page<Admin>getAllAdmin(Page page){
+        return adminMapper.selectPage(page,null);
     }
 
     public void addMapper(Admin admin){

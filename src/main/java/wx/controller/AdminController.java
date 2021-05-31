@@ -3,9 +3,13 @@ package wx.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
+import wx.enums.VirtualType;
 import wx.poj.*;
 import wx.service.*;
 import wx.util.CategoryUtil;
@@ -135,6 +139,33 @@ public class AdminController {
                 log.info(session.getId());
                 return new Result(user,"登录成功",0);
         }
+        return new Result(null,"登录失败 用户名或密码错误",1);
+    }
+
+
+    @PostMapping("/loginV2")
+    public Result LoginV2(@RequestBody LoginUser loginUser, HttpSession session){
+        if(loginUser==null){
+            return new Result(null,"user为空",1);
+        }
+        String phone=loginUser.getPhone();
+        String password=loginUser.getPassword();
+        password = DigestUtils.md5DigestAsHex(password.getBytes());
+        Integer identity=loginUser.getIdentity();
+        if (phone==null||password==null||identity==null){
+            return new Result(null,"用户名或者密码或者身份为空",1);
+        }
+
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time= sdf.format(new Date());
+        UserToken token = new UserToken(phone, password, VirtualType.ADMIN);
+        Subject currentUser = SecurityUtils.getSubject();
+        if (!currentUser.isAuthenticated()){
+            //使用shiro来验证
+            token.setRememberMe(true);
+            currentUser.login(token);//验证角色和权限
+        }
+
         return new Result(null,"登录失败 用户名或密码错误",1);
     }
 

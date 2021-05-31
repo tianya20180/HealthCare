@@ -3,48 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0bdbfb6b-64dd-4932-a60c-8655086974c0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/config/CustomRealm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/config/UserRealm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/config/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/config/ShiroConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/AliPayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/AliPayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/AskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/AskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/PayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/PayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/poj/Doctor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/poj/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/AdminService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/AskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/AskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/AuthenticationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/DoctorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/DoctorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/MessageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/TaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/WebSocketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/WebSocketService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/config/AlipayConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/config/AlipayConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/AliPayController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/AliPayController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/AskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/AskController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/MessageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/MessageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/PayController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/PayController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/poj/Doctor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/poj/Doctor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/poj/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/poj/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/AdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/AdminService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/ArticleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/ArticleService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/AskService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/AskService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/AuthenticationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/AuthenticationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/CategoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/CategoryService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/DoctorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/DoctorService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/MessageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/MessageService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/OrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/OrderService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/TaskService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/TaskService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/WebSocketService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/WebSocketService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/ArticleController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -187,7 +149,7 @@
       <workItem from="1620818773784" duration="30560000" />
       <workItem from="1621164068569" duration="86495000" />
       <workItem from="1621768431607" duration="22488000" />
-      <workItem from="1622013738951" duration="61407000" />
+      <workItem from="1622013738951" duration="68962000" />
     </task>
     <servers />
   </component>

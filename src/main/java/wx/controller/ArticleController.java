@@ -40,9 +40,9 @@ public class ArticleController
             vo.setLikeCount(0);
             vo.setViewCount(0);
             vo.setCreatedatetime(date);
-            if(SensitiveFilterUtil.checkTxt(vo.getContent()).size()>0){
+            /*if(SensitiveFilterUtil.checkTxt(vo.getContent()).size()>0){
                 return new Result(null,"文章发表失败，包含敏感词",1);
-            }
+            }*/
             articleService.insert(vo);
             return new Result(null,"插入成功",0);
     }

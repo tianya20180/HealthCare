@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
+import org.springframework.util.DigestUtils;
+import wx.poj.Admin;
 import wx.poj.User;
 import wx.service.DoctorService;
 import wx.service.UserService;
@@ -24,13 +26,11 @@ public class UserRealm extends AuthorizingRealm {
 
     @Autowired
     private UserService userService;
-    @Autowired
-    private DoctorService doctorService;
+
 
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        String username = (String) SecurityUtils.getSubject().getPrincipal();
         Set<String> roleNames = new HashSet<String>();
         roleNames.add("user");//添加角色
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo(roleNames);
@@ -49,14 +49,10 @@ public class UserRealm extends AuthorizingRealm {
         String userName = (String) authenticationToken.getPrincipal();
         String userPwd = new String((char[]) authenticationToken.getCredentials());
         //根据用户名从数据库获取密码
-        User user = userService.getByPhone(userName);
-        String password=null;
-        if(user!=null)
-          password=user.getPassword();
-        if (userName == null) {
-            throw new AccountException("用户名不正确");
-        } else if (password==null||!userPwd.equals(password )) {
-            throw new AccountException("密码不正确");
+        String password= DigestUtils.md5DigestAsHex(userPwd.getBytes());
+        User user= userService.checkUser(userName, password);
+        if (user == null) {
+            throw new AccountException("用户名或者密码错误");
         }
         return new SimpleAuthenticationInfo(userName, password,getName());
     }

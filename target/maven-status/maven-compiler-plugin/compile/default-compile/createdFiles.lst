@@ -25,7 +25,6 @@ wx\mapper\InformationMapper.class
 wx\mapper\UserMapper.class
 wx\service\MessageListService.class
 wx\websocket\ChatWebSocket.class
-wx\config\CustomRealm.class
 wx\enums\ChatTypeEnum.class
 wx\service\CommitService.class
 wx\service\DrugService.class

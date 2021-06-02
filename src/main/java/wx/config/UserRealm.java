@@ -1,5 +1,6 @@
 package wx.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -20,7 +21,7 @@ import wx.service.UserService;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Slf4j
 public class UserRealm extends AuthorizingRealm {
 
 
@@ -49,11 +50,14 @@ public class UserRealm extends AuthorizingRealm {
         String userName = (String) authenticationToken.getPrincipal();
         String userPwd = new String((char[]) authenticationToken.getCredentials());
         //根据用户名从数据库获取密码
+        log.info(userName);
+        log.info(userPwd);
         String password= DigestUtils.md5DigestAsHex(userPwd.getBytes());
         User user= userService.checkUser(userName, password);
         if (user == null) {
             throw new AccountException("用户名或者密码错误");
         }
-        return new SimpleAuthenticationInfo(userName, password,getName());
+        log.info(user.toString());
+        return new SimpleAuthenticationInfo(userName, userPwd,getName());
     }
 }

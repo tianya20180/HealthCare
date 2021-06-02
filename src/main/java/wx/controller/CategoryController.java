@@ -40,7 +40,7 @@ public class CategoryController {
         log.info(category.toString());
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date= sdf.format(new Date());
-        category.setCategoryName(date);
+        category.setCreateTime(date);
         categoryService.addCategory(category);
 
         return new Result(null,"添加成功",0);

@@ -3,10 +3,28 @@
   <component name="ChangeListManager">
     <list default="true" id="0bdbfb6b-64dd-4932-a60c-8655086974c0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/config/CustomRealm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/config/UserRealm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/config/AdminRelam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/config/AdminRelam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/config/DoctorRelam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/config/DoctorRelam.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wx/config/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/config/ShiroConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/config/UserRealm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/config/UserRealm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/ExceptionHandle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/ExceptionHandle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/ShiroLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/ShiroLoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/enums/VirtualType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/enums/VirtualType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/UserModularRealmAuthenticator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/poj/UserModularRealmAuthenticator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/UserToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/poj/UserToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/config/AdminRelam.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/config/AdminRelam.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/config/DoctorRelam.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/config/DoctorRelam.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/config/ShiroConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/config/ShiroConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/config/UserRealm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/config/UserRealm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/ShiroLoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/ShiroLoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/enums/VirtualType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/enums/VirtualType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/poj/UserModularRealmAuthenticator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/poj/UserModularRealmAuthenticator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/poj/UserToken.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/poj/UserToken.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -149,7 +167,7 @@
       <workItem from="1620818773784" duration="30560000" />
       <workItem from="1621164068569" duration="86495000" />
       <workItem from="1621768431607" duration="22488000" />
-      <workItem from="1622013738951" duration="68962000" />
+      <workItem from="1622013738951" duration="84160000" />
     </task>
     <servers />
   </component>

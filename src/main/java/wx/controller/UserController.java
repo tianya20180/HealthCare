@@ -75,7 +75,7 @@ public class UserController {
         String path=dest.getPath();
         log.info("end change");
 
-        return new Result(path,"更新头像成功",0);
+        return new Result(avatar,"更新头像成功",0);
     }
     @GetMapping("/get")
     public Result getUser(Integer id){

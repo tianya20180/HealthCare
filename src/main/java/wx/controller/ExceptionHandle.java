@@ -26,7 +26,7 @@ public class ExceptionHandle {
      * @param ex
      * @return
      */
-    /*
+/*
     @ResponseBody
     @ExceptionHandler(value = Exception.class)
     public Result errorHandler(Exception ex) {

@@ -4,18 +4,18 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import wx.enums.VirtualType;
 
 public class UserToken extends UsernamePasswordToken {
-    private VirtualType virtualType;
+    private String loginType;
 
-    public UserToken(final String username, final String password, VirtualType virtualType) {
+    public UserToken(final String username, final String password, String loginType) {
         super(username, password);
-        this.virtualType = virtualType;
+        this.loginType = loginType;
     }
 
-    public VirtualType getVirtualType() {
-        return virtualType;
+    public String getLoginType() {
+        return loginType;
+    }
+    public void setLoginType(String loginType) {
+        this.loginType = loginType;
     }
 
-    public void setVirtualType(VirtualType virtualType) {
-        this.virtualType = virtualType;
-    }
 }

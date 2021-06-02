@@ -4,6 +4,7 @@ package wx.controller;
 import com.zhenzi.sms.ZhenziSmsClient;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
@@ -68,28 +69,38 @@ public class ShiroLoginController {
         log.info("name:"+loginUser.getPhone()+"password:"+loginUser.getPassword()+"code:"+loginUser.getCaptchaCode());
         String phone=loginUser.getPhone();
         String password=loginUser.getPassword();
-        password = DigestUtils.md5DigestAsHex(password.getBytes());
+        //password = DigestUtils.md5DigestAsHex(password.getBytes());
         Integer identity=loginUser.getIdentity();
 
         if (phone==null||password==null||identity==null){
             return new Result(null,"用户名或者密码或者身份为空",1);
         }
         if(identity==0){
-            UserToken token = new UserToken(phone, password, VirtualType.USER);
-            Subject currentUser = SecurityUtils.getSubject();
-            if (!currentUser.isAuthenticated()){
-                //使用shiro来验证
-                token.setRememberMe(true);
-                currentUser.login(token);//验证角色和权限
-            }
+            try{
+                UserToken token = new UserToken(phone, password, VirtualType.User.toString());
+                Subject currentUser = SecurityUtils.getSubject();
+                if (!currentUser.isAuthenticated()){
+                    //使用shiro来验证
+                    token.setRememberMe(true);
+                    currentUser.login(token);//验证角色和权限
+                    log.info(SecurityUtils.getSubject().toString());
+                    User user=userService.getByPhone(loginUser.getPhone());
+                    return new Result(user,"登录成功",0);
 
+                }
+            }catch (AccountException e){
+                return new Result(null,e.getMessage(),1);
+            }
         }else if(identity==1){
-            UserToken token = new UserToken(phone, password, VirtualType.DOCTOR);
+            UserToken token = new UserToken(phone, password, VirtualType.Doctor.toString());
             Subject currentUser = SecurityUtils.getSubject();
             if (!currentUser.isAuthenticated()){
                 //使用shiro来验证
                 token.setRememberMe(true);
                 currentUser.login(token);//验证角色和权限
+                Doctor doctor=doctorService.getByPhone(loginUser.getPhone());
+                return new Result(doctor,"登录成功",0);
+
             }
         }
 

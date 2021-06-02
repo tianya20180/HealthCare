@@ -57,6 +57,15 @@ public class AdminRelam extends AuthorizingRealm {
         if (admin == null) {
             throw new AccountException("用户名或者密码错误");
         }
-        return new SimpleAuthenticationInfo(userName, password,getName());
+        Object principal = admin;
+        // （2）credentials：密码
+        Object credentials = admin.getPassword();
+        // （3）realmName：当前realm对象的name，调用父类的getName()方法即可
+        String realmName = getName();
+        // （4）盐值：取用户信息中唯一的字段来生成盐值，避免由于两个用户原始密码相同，加密后的密码也相同
+        ByteSource credentialsSalt = ByteSource.Util.bytes(userName);
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(principal, credentials, credentialsSalt,
+                realmName);
+        return info;
     }
 }

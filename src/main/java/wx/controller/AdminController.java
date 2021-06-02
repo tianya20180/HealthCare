@@ -158,7 +158,7 @@ public class AdminController {
 
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time= sdf.format(new Date());
-        UserToken token = new UserToken(phone, password, VirtualType.ADMIN);
+        UserToken token = new UserToken(phone, password, VirtualType.Admin.toString());
         Subject currentUser = SecurityUtils.getSubject();
         if (!currentUser.isAuthenticated()){
             //使用shiro来验证

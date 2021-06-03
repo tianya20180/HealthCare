@@ -24,6 +24,7 @@ import java.util.*;
 @Configuration
 public class ShiroConfig {
 
+    /*
     @Bean(name = "shiroFilter")
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
@@ -94,6 +95,6 @@ public class ShiroConfig {
         AdminRelam adminRelam = new AdminRelam();
         return adminRelam;
     }
-
+*/
 
 }

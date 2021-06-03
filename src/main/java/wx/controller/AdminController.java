@@ -113,6 +113,9 @@ public class AdminController {
             return new Result(null,"已注册",0);
         }
         admin.setPassword(DigestUtils.md5DigestAsHex(admin.getPassword().getBytes()));
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time= sdf.format(new Date());
+        admin.setCreateTime(time);
         adminService.addMapper(admin);
         return new Result(null,"登录成功",0);
     }
@@ -130,9 +133,7 @@ public class AdminController {
             return new Result(null,"用户名或者密码或者身份为空",1);
         }
         Admin user=adminService.checkMapper(phone,password);
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String time= sdf.format(new Date());
-        user.setCreateTime(time);
+
         if(user!=null){
                 session.setAttribute("admin",user);
                 session.setAttribute("identity",identity);

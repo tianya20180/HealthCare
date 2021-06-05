@@ -75,6 +75,8 @@ public class LoginController {
         }
         if(identity==0){
             User user=userService.checkUser(phone,password);
+            if(user.getStatus()==0)
+                return new Result(user,"账号被封禁",1);
 
             if(user!=null){
                 user.setIdentity(0);
@@ -87,6 +89,8 @@ public class LoginController {
 
         }else if(identity==1){
             Doctor doctor=doctorService.checkDoctor(phone,password);
+            if(doctor.getStatus()==0)
+                return new Result(doctor,"账号被封禁",1);
             if(doctor!=null){
                 doctor.setIdentity(1);
                 session.setAttribute("user",doctor);
@@ -158,12 +162,16 @@ public class LoginController {
         Map<String,Object> data=new HashMap<String,Object>();
         if(identity==0){
             User user=userService.getByPhone(phone);
+            if(user.getStatus()==2)
+                return new Result(user,"账号被封禁",1);
             session.setAttribute("user",user);
             session.setAttribute("identity",identity);
             return new Result(user,"登录成功",0);
 
         }else if(identity==1){
             Doctor doctor=doctorService.getByPhone(phone);
+            if(doctor.getStatus()==2)
+                return new Result(doctor,"账号被封禁",1);
             session.setAttribute("user",doctor);
             session.setAttribute("identity",identity);
             return new Result(doctor,"登录成功",0);
@@ -220,6 +228,7 @@ public class LoginController {
         }
         doctor.setMoney(0);
         doctor.setCategory(0);
+        doctor.setStatus(0);
         doctor.setPassword(DigestUtils.md5DigestAsHex(doctor.getPassword().getBytes()));
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date= sdf.format(new Date());

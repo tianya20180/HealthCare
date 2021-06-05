@@ -174,6 +174,8 @@ public class ArticleController
             if(!redisUtil.sHasKey(articleLikeKey,userId)){
                 log.info("add set");
                 redisUtil.sSet(articleLikeKey,userId);
+            }else{
+                return new Result(count,"点赞失败，已经点赞",1);
             }
             count=redisUtil.sGet(articleLikeKey).size();
         }else{

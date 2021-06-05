@@ -85,6 +85,7 @@ public class DoctorService {
         wrapper.eq("id",id).set("score",score);
         doctorMapper.update(null,wrapper);
     }
+
     public void updateDoctor(Integer id,Doctor doctor){
         UpdateWrapper<Doctor> wrapper=new UpdateWrapper();
         wrapper.eq("id",id);

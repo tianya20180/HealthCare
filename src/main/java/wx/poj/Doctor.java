@@ -41,7 +41,7 @@ public class Doctor {
     private Integer orderMoney;
     private double money;
     @TableField("status")
-    private Integer status;
+    private Integer status;//0未认证 1已认证 2被封禁
     private Integer identity;//0 用户 1医生
     private Integer category;
     @TableField(exist = false)

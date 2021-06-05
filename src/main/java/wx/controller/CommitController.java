@@ -47,6 +47,11 @@ public class CommitController {
         Doctor doctor=doctorService.getDoctorById(commit.getDoctorId());
         List<Commit>commitList=commitService.getCommits(doctorId);
         Float sum=Float.valueOf(0);
+        if(commitList.size()==0){
+            doctorService.updateScore(doctor.getId(),score);
+            commitService.addCommit(commit);
+            return new Result(null,"新增成功",0);
+        }
         for(Commit myCommit:commitList){
             sum+=myCommit.getScore();
         }

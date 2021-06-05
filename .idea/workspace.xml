@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="0bdbfb6b-64dd-4932-a60c-8655086974c0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/config/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/config/ShiroConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/CommitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/CommitController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/poj/Doctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/DoctorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/DoctorService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -146,7 +151,9 @@
       <workItem from="1620818773784" duration="30560000" />
       <workItem from="1621164068569" duration="86495000" />
       <workItem from="1621768431607" duration="22488000" />
-      <workItem from="1622013738951" duration="92726000" />
+      <workItem from="1622013738951" duration="93638000" />
+      <workItem from="1622787636079" duration="4620000" />
+      <workItem from="1622861322534" duration="4744000" />
     </task>
     <servers />
   </component>

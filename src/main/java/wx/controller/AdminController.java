@@ -217,6 +217,11 @@ public class AdminController {
         userService.changeUserStatus(id,0);
         return new Result(null,"修改成功",0);
     }
+    @GetMapping("/releaseUser")
+    public Result releaseUser(Integer id){
+        userService.changeUserStatus(id,1);
+        return new Result(null,"修改成功",0);
+    }
     @GetMapping("/deleteUser")
     public Result deleteUser(Integer id){
         userService.deleteUser(id);
@@ -224,7 +229,7 @@ public class AdminController {
     }
     @GetMapping("/banDoctor")
     public Result banDoctor(Integer id){
-        doctorService.changeDoctorStatus(id,0);
+        doctorService.changeDoctorStatus(id,2);
         return new Result(null,"修改成功",0);
     }
     @GetMapping("deleteDoctor")

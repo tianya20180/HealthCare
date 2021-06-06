@@ -47,11 +47,11 @@ public class DoctorService {
         return doctorMapper.selectList(wrapper);
     }
 
-    public List<Doctor>getDoctorListByCategory(Integer category){
+    public Page<Doctor>getDoctorListByCategory(Integer category,Page page){
         QueryWrapper<Doctor>wrapper=new QueryWrapper();
         wrapper.eq("category",category);
         wrapper.eq("status",1);
-        return doctorMapper.selectList(wrapper);
+        return doctorMapper.selectPage(page,wrapper);
     }
 
     public void changePassword(String phone,String password){

@@ -1,5 +1,6 @@
 package wx.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
@@ -51,12 +52,13 @@ public class DoctorController {
         return new Result(doctorList,"获取成功",0);
     }
     @GetMapping("/getDoctorByCategory")
-    public Result getDoctorByCategory(Integer category){
+    public Result getDoctorByCategory(Integer category,Integer currentPage,Integer pageSize){
         if(category==null) {
             return new Result(null, "类别为空", 1);
         }
-        List<Doctor> doctorList= doctorService.getDoctorListByCategory(category);
-        return new Result(doctorList,"获取成功",0);
+        Page page=new Page(currentPage,pageSize);
+        page= doctorService.getDoctorListByCategory(category,page);
+        return new Result(page,"获取成功",0);
     }
     @GetMapping("/changePassword")
     public Result changePassword(String oldPassword, String newPassword, HttpSession session){

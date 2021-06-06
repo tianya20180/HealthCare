@@ -5,10 +5,24 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/CommitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/CommitController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/poj/Doctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/DoctorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/controller/DoctorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/controller/PrescriptionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/mapper/UnionMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/poj/Union.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/ArticleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/DoctorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wx/service/DoctorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wx/service/DrugService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/ArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/ArticleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/DoctorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/controller/DoctorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/controller/PrescriptionController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/mapper/UnionMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/poj/Role.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/poj/Union.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/ArticleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/ArticleService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/DoctorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/wx/service/DoctorService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wx/service/DrugService.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -153,7 +167,9 @@
       <workItem from="1621768431607" duration="22488000" />
       <workItem from="1622013738951" duration="93638000" />
       <workItem from="1622787636079" duration="4620000" />
-      <workItem from="1622861322534" duration="4744000" />
+      <workItem from="1622861322534" duration="7535000" />
+      <workItem from="1622965410188" duration="601000" />
+      <workItem from="1622983748109" duration="4426000" />
     </task>
     <servers />
   </component>
@@ -176,26 +192,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/wx/controller/PrescriptionController.java</url>
-          <line>76</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/wx/controller/PrescriptionController.java</url>
-          <line>75</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/wx/controller/PrescriptionController.java</url>
-          <line>80</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/wx/controller/PrescriptionController.java</url>
-          <line>81</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/wx/controller/MessageController.java</url>
           <line>41</line>

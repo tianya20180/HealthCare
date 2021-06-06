@@ -34,11 +34,11 @@ public class ArticleService {
         return articleMapper.selectList(queryWrapper);
     }
 
-    public List<Article> getByCategory(Integer type){
+    public Page getByCategory(Integer type,Page page){
         QueryWrapper<Article>queryWrapper=new QueryWrapper<>();
         queryWrapper.eq("article_type",type);
         queryWrapper.orderByDesc("create_time");
-        return articleMapper.selectList(queryWrapper);
+        return articleMapper.selectPage(page,queryWrapper);
     }
 
     public List<Article> getHotArticle(){

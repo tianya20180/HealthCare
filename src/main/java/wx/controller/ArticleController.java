@@ -1,5 +1,6 @@
 package wx.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -96,9 +97,10 @@ public class ArticleController
         return new Result(articleList,"获取成功",0);
     }
     @GetMapping("/getByCategory")
-    public Result getByCategory(Integer category){
-        List<Article> articleList=articleService.getByCategory(category);
-        return new Result(articleList,"获取成功",0);
+    public Result getByCategory(Integer category,Integer currentPage,Integer currentSize){
+        Page page=new Page(currentPage,currentSize);
+        page=articleService.getByCategory(category,page);
+        return new Result(page,"获取成功",0);
     }
 
     @GetMapping("/getHot")

@@ -44,8 +44,6 @@ public class AdminController {
     @Resource
     private ArticleService articleService;
     @Resource
-    private DrugService drugService;
-    @Resource
     private CategoryService categoryService;
 
     @GetMapping("/getAllAdmin")
@@ -214,12 +212,22 @@ public class AdminController {
 
     @GetMapping("/banUser")
     public Result banUser(Integer id){
+        User user=userService.getUserById(id);
+        if(user.getStatus()==0){
+            return new Result(null,"封禁中 不能再次封禁",0);
+
+        }
         userService.changeUserStatus(id,0);
         return new Result(null,"修改成功",0);
     }
     @GetMapping("/releaseUser")
     public Result releaseUser(Integer id){
         userService.changeUserStatus(id,1);
+        return new Result(null,"修改成功",0);
+    }
+    @GetMapping("/releaseDoctor")
+    public Result releaseDoctor(Integer id){
+        doctorService.changeDoctorStatus(id,0);
         return new Result(null,"修改成功",0);
     }
     @GetMapping("/deleteUser")
@@ -291,18 +299,8 @@ public class AdminController {
         return new Result(null,"成功删除",0);
     }
 
-    @GetMapping("/getAllDrug")
-    public Result getAllDrug(){
-       List<Drug>drugList =drugService.getAllDrug();
-        return new Result(drugList,"成功获取",0);
-    }
-    @PostMapping("/addDrug")
-    public Result addDrug(@RequestBody Drug drug,Integer pid){
-        if(drug==null)
-            return new Result(null,"Drug为空",1);
-        int id=drugService.addDrug(drug);
-        return new Result(null,"新增成功",0);
-    }
+
+
     @GetMapping("/getAllCategory")
     public Result getAllCategory(int current,int size){
         Page<Category> page=new Page<>(current,size);

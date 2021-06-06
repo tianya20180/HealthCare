@@ -36,11 +36,9 @@ C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\config\RechargeCon
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\util\AliPayUtils.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\controller\CategoryController.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\controller\AliPayController.java
-C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\controller\PrescriptionController.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\poj\Information.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\util\PhoneCodeUtil.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\config\AlipayConfig.java
-C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\service\DrugService.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\config\UserRealm.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\filter\CorsFilter.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\controller\CommitController.java
@@ -54,7 +52,6 @@ C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\service\CommitServ
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\util\RedisUtil.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\controller\OrderController.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\poj\MessageResult.java
-C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\mapper\UnionMapper.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\mapper\AskMapper.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\enums\VirtualType.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\config\WebSocketConfig.java
@@ -88,7 +85,6 @@ C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\controller\Informa
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\util\Result.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\poj\Drug.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\poj\OutMessage.java
-C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\poj\Role.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\poj\MessageList.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\config\DoctorRelam.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\poj\Participant.java
@@ -96,7 +92,6 @@ C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\mapper\DrugMapper.
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\poj\TransferParams.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\util\ImageUtil.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\mapper\UserMapper.java
-C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\poj\Union.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\service\AskService.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\mapper\DiagnosisMapper.java
 C:\Users\wangxi\Downloads\HealthCare-backend\src\main\java\wx\enums\ChatTypeEnum.java

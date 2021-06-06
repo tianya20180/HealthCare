@@ -7,9 +7,7 @@ wx\util\JsonUtil.class
 wx\mapper\ArticleMapper.class
 wx\mapper\MessageMapper.class
 wx\poj\Order.class
-wx\poj\Union.class
 wx\mapper\PrescriptionMapper.class
-wx\controller\PrescriptionController.class
 wx\controller\AdminController.class
 wx\mapper\OrderMapper.class
 wx\service\ArticleLikeService.class
@@ -27,7 +25,6 @@ wx\service\MessageListService.class
 wx\websocket\ChatWebSocket.class
 wx\enums\ChatTypeEnum.class
 wx\service\CommitService.class
-wx\service\DrugService.class
 wx\service\OrderService.class
 wx\controller\UserController.class
 wx\service\InformationService.class
@@ -35,7 +32,6 @@ wx\util\ImageUtil.class
 wx\service\ArticleService.class
 wx\service\TaskService.class
 wx\util\CategoryUtil.class
-wx\poj\Role.class
 wx\poj\Article.class
 wx\filter\CorsFilter.class
 wx\mapper\CommitMapper.class
@@ -64,7 +60,6 @@ wx\service\AdminService.class
 inteceptor\SocketChannelIntecepter.class
 wx\service\MessageService.class
 inteceptor\HttpHandShakeIntecepter.class
-wx\mapper\UnionMapper.class
 wx\controller\CommitController.class
 wx\service\AskService.class
 wx\poj\Commit.class

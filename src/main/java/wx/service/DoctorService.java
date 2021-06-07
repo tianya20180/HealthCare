@@ -37,13 +37,15 @@ public class DoctorService {
     public List<Doctor>getDoctorList(String userName){
         QueryWrapper<Doctor>wrapper=new QueryWrapper();
         wrapper.like("user_name",userName).or().like("specialty",userName).or().like("des",userName);
+
         return doctorMapper.selectList(wrapper);
     }
 
     public List<Doctor>getDoctorListByTime(){
         QueryWrapper<Doctor>wrapper=new QueryWrapper();
         wrapper.eq("status",1);
-        wrapper.orderByDesc("create_time");
+        wrapper.orderByDesc("count");
+        wrapper.last("limit 10");
         return doctorMapper.selectList(wrapper);
     }
 

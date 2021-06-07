@@ -104,12 +104,6 @@ public class AdminController {
         if(admin==null){
             return new Result(null,"doctor为null",1);
         }
-        String phone=admin.getPhone();
-        Doctor exists=doctorService.getByPhone(phone);
-        if(exists!=null){
-            log.info("手机3号："+admin.getPhone()+"已注册");
-            return new Result(null,"已注册",0);
-        }
         admin.setPassword(DigestUtils.md5DigestAsHex(admin.getPassword().getBytes()));
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time= sdf.format(new Date());

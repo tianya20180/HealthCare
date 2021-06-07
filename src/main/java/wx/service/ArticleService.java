@@ -44,6 +44,7 @@ public class ArticleService {
     public List<Article> getHotArticle(){
         QueryWrapper<Article>queryWrapper=new QueryWrapper<>();
         queryWrapper.orderByDesc("view_count");
+        queryWrapper.last("limit 10");
         return articleMapper.selectList(queryWrapper);
     }
 

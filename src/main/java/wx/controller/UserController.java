@@ -35,7 +35,7 @@ public class UserController {
     }
 
 
-    @PostMapping("/changePassword")
+    @GetMapping("/changePassword")
     public Result changePassword(String oldPassword, String newPassword,String phone){
         log.info("start change password");
         log.info("old:"+oldPassword+"new"+newPassword+"phone"+phone);
@@ -54,7 +54,7 @@ public class UserController {
     }
     @PostMapping("/upload")
     public Result uploadAvatar(@RequestParam(value = "file")MultipartFile file, @RequestParam Integer id, HttpServletRequest request) throws IOException {
-      //  String dirPath=request.getServletContext().getRealPath("upload");
+       // String dirPath=request.getServletContext().getRealPath("upload");
         String dirPath="/home/lighthouse/wangxi/web/HealthyCare-Web/static/image/avatar";
         log.info("dir:"+dirPath);
         File dir=new File(dirPath);

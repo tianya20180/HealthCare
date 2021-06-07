@@ -45,6 +45,7 @@ wx\service\DoctorService.class
 wx\poj\Admin.class
 wx\util\PhoneCodeUtil.class
 wx\websocket\TestSocket.class
+wx\filter\LoginIntercepter.class
 wx\config\WebSocketConfig.class
 wx\config\AlipayConfig.class
 wx\poj\OutMessage.class

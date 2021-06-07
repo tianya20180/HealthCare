@@ -89,7 +89,7 @@ public class LoginController {
 
         }else if(identity==1){
             Doctor doctor=doctorService.checkDoctor(phone,password);
-            if(doctor.getStatus()==0)
+            if(doctor.getStatus()==2)
                 return new Result(doctor,"账号被封禁",1);
             if(doctor!=null){
                 doctor.setIdentity(1);

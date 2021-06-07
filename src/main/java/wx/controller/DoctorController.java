@@ -122,8 +122,8 @@ public class DoctorController {
         String date= sdf.format(new Date());
         authentication.setCreateTime(date);
 
-        authentication.setCardPhoto(watermark(authentication.getCardPhoto().substring(23),date));
-        authentication.setDoctorPhoto(watermark(authentication.getDoctorPhoto().substring(23),date));
+       // authentication.setCardPhoto(watermark(authentication.getCardPhoto().substring(23),date));
+        //authentication.setDoctorPhoto(watermark(authentication.getDoctorPhoto().substring(23),date));
         authenticationService.addAuthentication(authentication);
         return new Result(null,"上传成功",0);
     }
